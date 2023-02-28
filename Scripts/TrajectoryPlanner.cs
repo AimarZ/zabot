@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using RosMessageTypes.Geometry;
 using RosMessageTypes.NiryoMoveit;
@@ -10,7 +9,6 @@ using UnityEngine;
 
 public class TrajectoryPlanner : MonoBehaviour
 {
-
     // Hardcoded variables
     const int k_NumRobotJoints = 6;
     const float k_JointAssignmentWait = 0.1f;
@@ -24,47 +22,12 @@ public class TrajectoryPlanner : MonoBehaviour
     [SerializeField]
     GameObject m_NiryoOne;
     public GameObject NiryoOne { get => m_NiryoOne; set => m_NiryoOne = value; }
-
-    //[SerializeField]
-    //GameObject m_Target;
-    //public GameObject Target { get => m_Target; set => m_Target = value; }
-    //[SerializeField]
-    //GameObject m_TargetPlacement;
-    //public GameObject TargetPlacement { get => m_TargetPlacement; set => m_TargetPlacement = value; }
-
-    //CUSTOM LINES
     [SerializeField]
-    GameObject m_RedCube;
-    public GameObject RedCube { get => m_RedCube; set => m_RedCube = value; }
+    GameObject m_Target;
+    public GameObject Target { get => m_Target; set => m_Target = value; }
     [SerializeField]
-    GameObject m_GreenCube;
-    public GameObject GreenCube { get => m_GreenCube; set => m_GreenCube = value; }
-    [SerializeField]
-    GameObject m_BlueCube;
-    public GameObject BlueCube { get => m_BlueCube; set => m_BlueCube = value; }
-
-    [SerializeField]
-    GameObject m_RedCan;
-    public GameObject RedCan { get => m_RedCan; set => m_RedCan = value; }
-    [SerializeField]
-    GameObject m_GreenCan;
-    public GameObject GreenCan { get => m_GreenCan; set => m_GreenCan = value; }
-    [SerializeField]
-    GameObject m_BlueCan;
-    public GameObject BlueCan { get => m_BlueCan; set => m_BlueCan = value; }
-
-
-    private GameObject[] pickObjects;
-    private GameObject[] placeObjects;
-    string textFile;
-    
-    List<int> orderList;
-    string[] lines;
-
-    static int[] pickOrder;
-    static int next = 0;
-
-    //END CUSTOM LINES
+    GameObject m_TargetPlacement;
+    public GameObject TargetPlacement { get => m_TargetPlacement; set => m_TargetPlacement = value; }
 
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
@@ -77,22 +40,6 @@ public class TrajectoryPlanner : MonoBehaviour
 
     // ROS Connector
     ROSConnection m_Ros;
-
-    public TrajectoryPlanner(){
-        pickObjects = new GameObject[] {m_RedCube, m_GreenCube, m_BlueCube};
-        placeObjects = new GameObject[]  {m_RedCan, m_GreenCan, m_BlueCan};
-        //textFile = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "pickObjects.txt";
-        
-        // orderList = new List<int>();
-        // lines = File.ReadAllLines(textFile);
-
-        // foreach (string line in lines){
-        //     int value = Int32.Parse(line);
-        //     orderList.Add(value);
-        // }
-        //pickOrder = orderList.ToArray();
-        pickOrder = new int[] {1,2,3};
-    }
 
     /// <summary>
     ///     Find all robot joints in Awake() and add them to the jointArticulationBodies array.
@@ -178,29 +125,21 @@ public class TrajectoryPlanner : MonoBehaviour
         var request = new MoverServiceRequest();
         request.joints_input = CurrentJointConfig();
 
-        if (pickOrder.Length <= next){
-            return;
-        }
         // Pick Pose
-    
         request.pick_pose = new PoseMsg
         {
-            //position = (m_Target.transform.position + m_PickPoseOffset).To<FLU>(),
-            position = (pickObjects[pickOrder[next]].transform.position + m_PickPoseOffset).To<FLU>(),
+            position = (m_Target.transform.position + m_PickPoseOffset).To<FLU>(),
 
             // The hardcoded x/z angles assure that the gripper is always positioned above the target cube before grasping.
-            //orientation = Quaternion.Euler(90, m_Target.transform.eulerAngles.y, 0).To<FLU>()
-            orientation = Quaternion.Euler(90, pickObjects[pickOrder[next]].transform.eulerAngles.y, 0).To<FLU>()
+            orientation = Quaternion.Euler(90, m_Target.transform.eulerAngles.y, 0).To<FLU>()
         };
 
         // Place Pose
         request.place_pose = new PoseMsg
         {
-            //position = (m_TargetPlacement.transform.position + m_PickPoseOffset).To<FLU>(),
-            position = (placeObjects[pickOrder[next]].transform.position + m_PickPoseOffset).To<FLU>(),
+            position = (m_TargetPlacement.transform.position + m_PickPoseOffset).To<FLU>(),
             orientation = m_PickOrientation.To<FLU>()
         };
-        next++;
 
         m_Ros.SendServiceMessage<MoverServiceResponse>(m_RosServiceName, request, TrajectoryResponse);
     }
