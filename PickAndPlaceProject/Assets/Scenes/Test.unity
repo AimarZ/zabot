@@ -6027,8 +6027,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc58d7031aa57ff768ab2556e13c0ae0, type: 3}
   m_PrefabInstance: {fileID: 1132587181}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &914661520
-BoxCollider:
+--- !u!64 &914661517
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6037,9 +6037,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: cc58d7031aa57ff768ab2556e13c0ae0, type: 3}
 --- !u!54 &914661521
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7356,13 +7357,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1230935087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d95a5ef0dc00ef4cfaafa65973fd5cd8, type: 3}
+  m_Script: {fileID: 11500000, guid: b09755c44f79fca07adf2ddd51b64be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_RosServiceName: niryo_moveit
   m_NiryoOne: {fileID: 1961109583}
-  m_Target: {fileID: 1443981109}
-  m_TargetPlacement: {fileID: 638996093}
+  m_RedCan: {fileID: 638996093}
+  m_GreenCan: {fileID: 2065527424}
+  m_BlueCan: {fileID: 79632075}
+  m_RedCube: {fileID: 1443981109}
+  m_GreenCube: {fileID: 951753084}
+  m_BlueCube: {fileID: 914661516}
 --- !u!65 &1230935091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7832,7 +7837,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1230935090}
-        m_TargetAssemblyTypeName: TrajectoryPlanner, Assembly-CSharp
+        m_TargetAssemblyTypeName: TrajectoryPlanner, Unity.Robotics.PickAndPlace
         m_MethodName: PublishJoints
         m_Mode: 1
         m_Arguments:

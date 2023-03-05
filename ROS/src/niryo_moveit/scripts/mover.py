@@ -77,14 +77,25 @@ def plan_pick_and_place(req):
 
     current_robot_joint_configuration = req.joints_input.joints
 
-    # Pre grasp - position gripper directly above target object
-    pre_grasp_pose = plan_trajectory(move_group, req.pick_pose, current_robot_joint_configuration)
+    # Pre grasp - position gripper directly above target object in 2 steps
+    pick_pose = copy.deepcopy(req.pick_pose)
+    pick_pose.position.z += 0.15  # Static value coming from Unity, TODO: pass along with request
+    pre_grasp_pose = plan_trajectory(move_group, pick_pose, current_robot_joint_configuration)
     
     # If the trajectory has no points, planning has failed and we return an empty response
     if not pre_grasp_pose.joint_trajectory.points:
         return response
 
     previous_ending_joint_angles = pre_grasp_pose.joint_trajectory.points[-1].positions
+
+    pick_pose.position.z -= 0.15  # Static value coming from Unity, TODO: pass along with request
+    pre_grasp_pose2 = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
+    
+    # If the trajectory has no points, planning has failed and we return an empty response
+    if not pre_grasp_pose2.joint_trajectory.points:
+        return response
+
+    previous_ending_joint_angles = pre_grasp_pose2.joint_trajectory.points[-1].positions
 
     # Grasp - lower gripper so that fingers are on either side of object
     pick_pose = copy.deepcopy(req.pick_pose)
@@ -96,25 +107,54 @@ def plan_pick_and_place(req):
 
     previous_ending_joint_angles = grasp_pose.joint_trajectory.points[-1].positions
 
-    # Pick Up - raise gripper back to the pre grasp position
-    pick_up_pose = plan_trajectory(move_group, req.pick_pose, previous_ending_joint_angles)
+    # Pick Up - raise gripper back to the pre grasp position in 2 steps
+    pick_pose.position.z += 0.05
+    pick_pose.position.z += 0.05
+    pick_up_pose = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
     
     if not pick_up_pose.joint_trajectory.points:
         return response
 
     previous_ending_joint_angles = pick_up_pose.joint_trajectory.points[-1].positions
 
-    # Place - move gripper to desired placement position
+
+    pick_pose.position.z += 0.10
+    pick_up_pose2 = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
+    
+    if not pick_up_pose2.joint_trajectory.points:
+        return response
+
+    previous_ending_joint_angles = pick_up_pose2.joint_trajectory.points[-1].positions
+
+    # Place - move gripper to desired placement position in 2 steps
     place_pose = plan_trajectory(move_group, req.place_pose, previous_ending_joint_angles)
 
     if not place_pose.joint_trajectory.points:
         return response
 
+    previous_ending_joint_angles = place_pose.joint_trajectory.points[-1].positions
+
+    place_it_pose = copy.deepcopy(req.place_pose)
+    place_it_pose.position.z -= 0.1
+    place_pose2 = plan_trajectory(move_group, place_it_pose, previous_ending_joint_angles)
+    
+    if not place_pose2.joint_trajectory.points:
+        return response
+
+    previous_ending_joint_angles = place_pose2.joint_trajectory.points[-1].positions
+
+    # PostPlace - move gripper to desired post placement position
+    post_place_pose = plan_trajectory(move_group, req.place_pose, previous_ending_joint_angles)
+
     # If trajectory planning worked for all pick and place stages, add plan to response
     response.trajectories.append(pre_grasp_pose)
+    response.trajectories.append(pre_grasp_pose2)
     response.trajectories.append(grasp_pose)
     response.trajectories.append(pick_up_pose)
+    response.trajectories.append(pick_up_pose2)
     response.trajectories.append(place_pose)
+    response.trajectories.append(place_pose2)
+    response.trajectories.append(post_place_pose)
 
     move_group.clear_pose_targets()
 
