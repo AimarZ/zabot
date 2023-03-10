@@ -1,0 +1,848 @@
+Using pre-set license
+Desktop is 1366 x 768 @ 60 Hz
+
+ COMMAND LINE ARGUMENTS:
+Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/home/aimar/Descargas/Robotics-Object-Pose-Estimation/PoseEstimationProjectV2
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+32893
+Successfully changed project path to: /home/aimar/Descargas/Robotics-Object-Pose-Estimation/PoseEstimationProjectV2
+/home/aimar/Descargas/Robotics-Object-Pose-Estimation/PoseEstimationProjectV2
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 66,61 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Initialize engine version: 2020.2.6f1 (8a2143876886)
+[Subsystems] Discovering subsystems at path /home/aimar/Unity/Hub/Editor/2020.2.6f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /home/aimar/Descargas/Robotics-Object-Pose-Estimation/PoseEstimationProjectV2/Assets
+GLX Extensions: GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_visual_info GLX_EXT_visual_rating GLX_EXT_import_context GLX_SGI_video_sync GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGI_swap_control GLX_EXT_swap_control GLX_EXT_swap_control_tear GLX_EXT_buffer_age GLX_ARB_create_context GLX_ARB_create_context_profile GLX_NV_float_buffer GLX_ARB_fbconfig_float GLX_EXT_texture_from_pixmap GLX_EXT_framebuffer_sRGB GLX_NV_copy_image GLX_EXT_create_context_es_profile GLX_EXT_create_context_es2_profile GLX_ARB_create_context_no_error GLX_ARB_create_context_robustness GLX_NV_delay_before_swap GLX_EXT_stereo_tree GLX_ARB_context_flush_control GLX_NV_robustness_video_memory_purge GLX_NV_multigpu_context 
+Renderer: NVIDIA GeForce GTX 1050 Ti/PCIe/SSE2
+Vendor:   NVIDIA Corporation
+Version:  4.5.0 NVIDIA 470.161.03
+GLES:     0
+ GL_AMD_multi_draw_indirect GL_AMD_seamless_cubemap_per_texture GL_AMD_vertex_shader_viewport_index GL_AMD_vertex_shader_layer GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_bindless_texture GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_color_buffer_float GL_ARB_compressed_texture_pixel_storage GL_ARB_conservative_depth GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_indirect GL_ARB_draw_elements_base_vertex GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_ES2_compatibility GL_ARB_ES3_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragmen
+t_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_fragment_shader_interlock GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_geometry_shader4 GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_imaging GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program_interface_query GL_ARB_provoki
+ng_vertex GL_ARB_query_buffer_object GL_ARB_robust_buffer_access_behavior GL_ARB_robustness GL_ARB_sample_locations GL_ARB_sample_shading GL_ARB_sampler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_atomic_counter_ops GL_ARB_shader_atomic_counters GL_ARB_shader_ballot GL_ARB_shader_bit_encoding GL_ARB_shader_clock GL_ARB_shader_draw_parameters GL_ARB_shader_group_vote GL_ARB_shader_image_load_store GL_ARB_shader_image_size GL_ARB_shader_objects GL_ARB_shader_precision GL_ARB_shader_storage_buffer_object GL_ARB_shader_subroutine GL_ARB_shader_texture_image_samples GL_ARB_shader_texture_lod GL_ARB_shading_language_100 GL_ARB_shader_viewport_layer_array GL_ARB_shading_language_420pack GL_ARB_shading_language_include GL_ARB_shading_language_packing GL_ARB_shadow GL_ARB_sparse_buffer GL_ARB_sparse_texture GL_ARB_sparse_texture2 GL_ARB_sparse_texture_clamp GL_ARB_spirv_extensions GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_tessellation_shader GL_A
+RB_texture_barrier GL_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression GL_ARB_texture_compression_bptc GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map GL_ARB_texture_cube_map_array GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_filter_anisotropic GL_ARB_texture_filter_minmax GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_mirrored_repeat GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_t
+ranspose_matrix GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_64bit GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_viewport_array GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_bindable_uniform GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_Cg_shader GL_EXT_depth_bounds_test GL_EXT_direct_state_access GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXTX_framebuffer_mixed_formats GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_geometry_shader4 GL_EXT_gpu_program_parameters 
+GL_EXT_gpu_shader4 GL_EXT_multi_draw_arrays GL_EXT_multiview_texture_multisample GL_EXT_multiview_timer_query GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_polygon_offset_clamp GL_EXT_post_depth_coverage GL_EXT_provoking_vertex GL_EXT_raster_multisample GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_shader_objects GL_EXT_separate_specular_color GL_EXT_shader_image_load_formatted GL_EXT_shader_image_load_store GL_EXT_shader_integer_mix GL_EXT_shadow_funcs GL_EXT_sparse_texture2 GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_array GL_EXT_texture_buffer_object GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_latc GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_filter_minmax GL_EXT_texture_integer GL_EXT_texture_lod G
+L_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_shadow_lod GL_EXT_texture_shared_exponent GL_EXT_texture_sRGB GL_EXT_texture_sRGB_R8 GL_EXT_texture_sRGB_decode GL_EXT_texture_storage GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback2 GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_EXT_vertex_attrib_64bit GL_EXT_window_rectangles GL_EXT_x11_sync_object GL_EXT_import_sync_object GL_NV_robustness_video_memory_purge GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KHR_context_flush_control GL_KHR_debug GL_EXT_memory_object GL_EXT_memory_object_fd GL_NV_memory_object_sparse GL_KHR_parallel_shader_compile GL_KHR_no_error GL_KHR_robust_buffer_access_behavior GL_KHR_robustness GL_EXT_semaphore GL_EXT_semaphore_fd GL_NV_timeline_semaphore GL_KHR_shader_subgroup GL_KTX_buffer_region GL_NV_alpha_to_coverage_dither_control GL_NV_bindless_multi_draw_indirect GL_NV_bindless_multi_draw_indirect_count GL_NV_bindless_texture GL_NV_blend_equation_advanced GL_NV_
+blend_equation_advanced_coherent GL_NVX_blend_equation_advanced_multi_draw_buffers GL_NV_blend_minmax_factor GL_NV_blend_square GL_NV_clip_space_w_scaling GL_NV_command_list GL_NV_compute_program5 GL_NV_conditional_render GL_NV_conservative_raster GL_NV_conservative_raster_dilate GL_NV_conservative_raster_pre_snap_triangles GL_NV_copy_depth_to_color GL_NV_copy_image GL_NV_depth_buffer_float GL_NV_depth_clamp GL_NV_draw_texture GL_NV_draw_vulkan_image GL_NV_ES1_1_compatibility GL_NV_ES3_1_compatibility GL_NV_explicit_multisample GL_NV_feature_query GL_NV_fence GL_NV_fill_rectangle GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_coverage_to_color GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_fragment_shader_interlock GL_NV_framebuffer_mixed_samples GL_NV_framebuffer_multisample_coverage GL_NV_geometry_shader4 GL_NV_geometry_shader_passthrough GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_
+NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_memory_attachment GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_path_rendering_shared_edge GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_sample_locations GL_NV_sample_mask_override_coverage GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_float64 GL_NV_shader_atomic_fp16_vector GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_shader_subgroup_partitioned GL_NV_stereo_view_rendering GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_N
+V_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_buffer_unified_memory GL_NV_vdpau_interop GL_NV_vdpau_interop2 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NV_viewport_array2 GL_NV_viewport_swizzle GL_NVX_conditional_render GL_NV_gpu_multicast GL_NVX_progress_fence GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent GL_OVR_multiview GL_OVR_multiview2 GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 98307720
+Initialize mono
+Mono path[0] = '/home/aimar/Unity/Hub/Editor/2020.2.6f1/Editor/Data/Managed'
+Mono path[1] = '/home/aimar/Unity/Hub/Editor/2020.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/home/aimar/Unity/Hub/Editor/2020.2.6f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56961
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /home/aimar/Unity/Hub/Editor/2020.2.6f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0,001398 seconds.
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 63,59 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,895 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0,003225 seconds.
+Begin MonoManager ReloadAssembly
+Error: Could not load signature of TrajectoryPlanner:PoseEstimationCallback due to: Could not resolve type with token 01000031 (from typeref, class/assembly Unity.Robotics.ROSTCPConnector.MessageGeneration.Message, Unity.Robotics.ROSTCPConnector, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null) assembly:Unity.Robotics.ROSTCPConnector, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:Unity.Robotics.ROSTCPConnector.MessageGeneration.Message member:(null) signature:<none>
+
+Could not load signature of TrajectoryPlanner:TrajectoryResponse due to: Could not resolve type with token 01000031 (from typeref, class/assembly Unity.Robotics.ROSTCPConnector.MessageGeneration.Message, Unity.Robotics.ROSTCPConnector, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null) assembly:Unity.Robotics.ROSTCPConnector, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:Unity.Robotics.ROSTCPConnector.MessageGeneration.Message member:(null) signature:<none>
+Unloading broken assembly Library/ScriptAssemblies/Assembly-CSharp.dll, this assembly can cause crashes in the runtime
+
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 74,57 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2,575 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0,90 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3302 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 136,1 MB.
+System memory in use after: 134,5 MB.
+
+Unloading 70 unused Assets to reduce memory usage. Loaded Objects now: 3691.
+Total: 7,211937 ms (FindLiveObjects: 0,357033 ms CreateObjectMapping: 0,356163 ms MarkObjects: 4,066798 ms  DeleteObjects: 2,430136 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_finger_0.asset
+  artifactKey: Guid(970a1217212fd492e8ad847b567ec43d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_finger_0.asset using Guid(970a1217212fd492e8ad847b567ec43d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7169b0909b77f2a7a3f5edea7ad1419') in 0,389926 seconds
+  Import took 0,395983 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000291 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_knuckle.prefab
+  artifactKey: Guid(3d6d0b08f1aec46729f1a9e76b301e7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_knuckle.prefab using Guid(3d6d0b08f1aec46729f1a9e76b301e7a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10748ec28a80a23a200d9a93c69c3e25') in 0,193815 seconds
+  Import took 0,198841 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000270 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_finger_0.asset
+  artifactKey: Guid(8f02fcd2e9c884f32a146524efe59312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_finger_0.asset using Guid(8f02fcd2e9c884f32a146524efe59312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd12e9ad63a62fd678812f79ffafd7eb6') in 0,006261 seconds
+  Import took 0,010944 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000274 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_knuckle_0.asset
+  artifactKey: Guid(cb2303175ceaa4ceaa090485e7b08b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_knuckle_0.asset using Guid(cb2303175ceaa4ceaa090485e7b08b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2147d92e929fbf5b310ad4a8e9f001e') in 0,005646 seconds
+  Import took 0,010734 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000226 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_base_link.prefab
+  artifactKey: Guid(93ed2c75abc954db1afc9d502cd60e77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_base_link.prefab using Guid(93ed2c75abc954db1afc9d502cd60e77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76997b40f811b5edc084ac2e54ece7ed') in 0,008675 seconds
+  Import took 0,013508 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000207 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_finger_0.asset
+  artifactKey: Guid(9142c27794acc44eeac9451f803f1d0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_finger_0.asset using Guid(9142c27794acc44eeac9451f803f1d0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3565cded8fa86c28b895002eed6f107') in 0,006270 seconds
+  Import took 0,011407 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000148 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_base_link_0.asset
+  artifactKey: Guid(8f6bb6d04a699422baf8a83c9261580f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_base_link_0.asset using Guid(8f6bb6d04a699422baf8a83c9261580f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dfe96b9daf5c93ba67814d8d9da8c75') in 0,007402 seconds
+  Import took 0,012604 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000130 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_finger.prefab
+  artifactKey: Guid(b028b05c5eb474e149455232fa3030d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_finger.prefab using Guid(b028b05c5eb474e149455232fa3030d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58fe160eac808720ca2219cd5b8e92b4') in 0,007465 seconds
+  Import took 0,012488 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000160 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_knuckle_0.asset
+  artifactKey: Guid(c4ff82fbbc46d46a396bde70b0b9d61f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_knuckle_0.asset using Guid(c4ff82fbbc46d46a396bde70b0b9d61f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f43c6a2757c611729e302c73d6ccb20') in 0,006355 seconds
+  Import took 0,011466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000213 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_knuckle.prefab
+  artifactKey: Guid(451c61199293e4b849190a10b7069f97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_knuckle.prefab using Guid(451c61199293e4b849190a10b7069f97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '251a279f5f6445133bc77bbead6f46f1') in 0,009343 seconds
+  Import took 0,014551 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000193 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_base_link.prefab
+  artifactKey: Guid(240499ebf599b4c96b5b8f093a92cc6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_base_link.prefab using Guid(240499ebf599b4c96b5b8f093a92cc6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85fe90dffc08b4cfe4a5ef156ca617e0') in 0,024607 seconds
+  Import took 0,029777 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000237 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_knuckle.prefab
+  artifactKey: Guid(a29a365f43d59450fb69adb775090b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_knuckle.prefab using Guid(a29a365f43d59450fb69adb775090b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3a0e2adde3cc97601e86cd5e29aef5c') in 0,006028 seconds
+  Import took 0,011508 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000282 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_knuckle.prefab
+  artifactKey: Guid(db8cf7e47d15e40ddbf86b4e3814ab21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_knuckle.prefab using Guid(db8cf7e47d15e40ddbf86b4e3814ab21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e57f36e2e50f3df32c6158cda1539bb8') in 0,008676 seconds
+  Import took 0,014484 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000270 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_finger_0.asset
+  artifactKey: Guid(f8331f58467184c5a921602e7b71eaa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_finger_0.asset using Guid(f8331f58467184c5a921602e7b71eaa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3005fbc10bd6d0dd9d75629811eeae52') in 0,005766 seconds
+  Import took 0,011147 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000268 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_knuckle_0.asset
+  artifactKey: Guid(dcd2393bde69a46ceba74aa7e86a4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_knuckle_0.asset using Guid(dcd2393bde69a46ceba74aa7e86a4abc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be2bdaa1ecacd6c5d9e5c764f803aebe') in 0,005335 seconds
+  Import took 0,010429 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000266 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_finger.prefab
+  artifactKey: Guid(335cbfa01db21456e95797d3e8b9e164) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_inner_finger.prefab using Guid(335cbfa01db21456e95797d3e8b9e164) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '151f4bf99f58b06ba10e89a2d6f35c24') in 0,006754 seconds
+  Import took 0,011572 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000233 seconds.
+  path: Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs
+  artifactKey: Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs using Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7370077044cb91223b1a973199a9ee3c') in 0,000867 seconds
+  Import took 0,005803 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000198 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_knuckle_0.asset
+  artifactKey: Guid(266f379c0b6c64d548cecd4dfe0776cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_140_outer_knuckle_0.asset using Guid(266f379c0b6c64d548cecd4dfe0776cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f2857590c84e279ad060dbff3ea9e49') in 0,006197 seconds
+  Import took 0,011106 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000240 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_finger.prefab
+  artifactKey: Guid(fdc79b0c3f1294114b38273ab2ad7d2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_inner_finger.prefab using Guid(fdc79b0c3f1294114b38273ab2ad7d2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '016c1ad6c9b7d514531b8a48cd185c5e') in 0,006259 seconds
+  Import took 0,011138 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000239 seconds.
+  path: Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs
+  artifactKey: Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs using Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7370077044cb91223b1a973199a9ee3c') in 0,000928 seconds
+  Import took 0,007054 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000235 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_finger.prefab
+  artifactKey: Guid(d9622a29825e04a468db5ebc27dc991d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/collision/robotiq_arg2f_140_outer_finger.prefab using Guid(d9622a29825e04a468db5ebc27dc991d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30869e27648f4dd5814c48482482eda7') in 0,005940 seconds
+  Import took 0,011773 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000385 seconds.
+  path: Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_base_link_0.asset
+  artifactKey: Guid(a9abdf28125a64ad187b9c335515cc78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/URDFs/ur3_with_gripper/robotiq_2f_140_gripper_visualization/meshes/visual/robotiq_arg2f_base_link_0.asset using Guid(a9abdf28125a64ad187b9c335515cc78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5818debe45d17ce1200f4aec6279eab') in 0,023276 seconds
+  Import took 0,028931 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 30,041819 seconds.
+  path: Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs
+  artifactKey: Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs using Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b14bd4366e24e90a6e3605fd6f9b5ea7') in 0,000864 seconds
+  Import took 0,006214 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 36,643997 seconds.
+  path: Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs
+  artifactKey: Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs using Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc1d3276d72c2c50c746a89b1147e820') in 0,000898 seconds
+  Import took 0,005859 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24,501489 seconds.
+  path: Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs
+  artifactKey: Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs using Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec33bbcc3a9d24f19c44e619c3c41914') in 0,000871 seconds
+  Import took 0,005931 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,008868 seconds.
+  path: Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs
+  artifactKey: Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Moveit/msg/RobotTrajectory.cs using Guid(670239d53265f4c57a5859d6e7e2ac0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec33bbcc3a9d24f19c44e619c3c41914') in 0,000890 seconds
+  Import took 0,005806 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15,747121 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/msg/UR3MoveitJoints.cs
+  artifactKey: Guid(25c87d03fcc8749a3a5d97dadfccba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/msg/UR3MoveitJoints.cs using Guid(25c87d03fcc8749a3a5d97dadfccba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5ac92dcfd349142489b8af0130e6699') in 0,000914 seconds
+  Import took 0,005903 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18,036011 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/msg/UR3MoveitJoints.cs
+  artifactKey: Guid(25c87d03fcc8749a3a5d97dadfccba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/msg/UR3MoveitJoints.cs using Guid(25c87d03fcc8749a3a5d97dadfccba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f49c907349663e97aac49b323accbb2') in 0,001096 seconds
+  Import took 0,006204 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000358 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/msg/UR3MoveitJoints.cs
+  artifactKey: Guid(25c87d03fcc8749a3a5d97dadfccba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/msg/UR3MoveitJoints.cs using Guid(25c87d03fcc8749a3a5d97dadfccba03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f49c907349663e97aac49b323accbb2') in 0,000837 seconds
+  Import took 0,005480 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23,414951 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs
+  artifactKey: Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs using Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bd7982ad86ce9e861ada9107496b3db') in 0,000884 seconds
+  Import took 0,005811 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,001275 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs
+  artifactKey: Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs using Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bd7982ad86ce9e861ada9107496b3db') in 0,000870 seconds
+  Import took 0,006279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10,003975 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs
+  artifactKey: Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs using Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '999582ca36f463b0e6c89606290748cd') in 0,000863 seconds
+  Import took 0,006026 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,007180 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs
+  artifactKey: Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs using Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '999582ca36f463b0e6c89606290748cd') in 0,000929 seconds
+  Import took 0,005986 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39,679056 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs
+  artifactKey: Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs using Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a497d022253aae530c9ebc5683ac1c8b') in 0,000936 seconds
+  Import took 0,006359 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,003475 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs
+  artifactKey: Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs using Guid(5e23c31d1d96746c7a0acadf55cc6e56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a497d022253aae530c9ebc5683ac1c8b') in 0,000935 seconds
+  Import took 0,005736 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12,762387 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs
+  artifactKey: Guid(5778575cb4d4e4afbb15ce3fd9f1257b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs using Guid(5778575cb4d4e4afbb15ce3fd9f1257b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a696a06857c107b94b3965c5904d44b') in 0,001041 seconds
+  Import took 0,006090 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9,045351 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs
+  artifactKey: Guid(5778575cb4d4e4afbb15ce3fd9f1257b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs using Guid(5778575cb4d4e4afbb15ce3fd9f1257b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a5508841fe8d39367ce31d1367e8145') in 0,000885 seconds
+  Import took 0,005953 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,006811 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs
+  artifactKey: Guid(5778575cb4d4e4afbb15ce3fd9f1257b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs using Guid(5778575cb4d4e4afbb15ce3fd9f1257b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a5508841fe8d39367ce31d1367e8145') in 0,001043 seconds
+  Import took 0,006217 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14,643761 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs
+  artifactKey: Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs using Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b8510236aa2521db134cf896c484e82') in 0,001070 seconds
+  Import took 0,006741 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,001243 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs
+  artifactKey: Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs using Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b8510236aa2521db134cf896c484e82') in 0,000866 seconds
+  Import took 0,006534 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19,376507 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs
+  artifactKey: Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs using Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6589e6dd1f767736c36cc66096213f3e') in 0,000880 seconds
+  Import took 0,005759 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 66,897768 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs
+  artifactKey: Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs using Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a640a49dd2f1dbc82958c2822ef059f') in 0,000915 seconds
+  Import took 0,006004 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,008959 seconds.
+  path: Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs
+  artifactKey: Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs using Guid(674a32fe466494d7790f49f4f62697d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a640a49dd2f1dbc82958c2822ef059f') in 0,000906 seconds
+  Import took 0,005970 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27,497277 seconds.
+  path: Assets/ExampleAssets/Models/safetygoggles_low.fbx
+  artifactKey: Guid(6296e48663fd7ad46b1a2af507f871cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ExampleAssets/Models/safetygoggles_low.fbx using Guid(6296e48663fd7ad46b1a2af507f871cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb79e6676f9c7fac9ca6734997a1eae9') in 0,299310 seconds
+  Import took 0,307312 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000211 seconds.
+  path: Assets/ExampleAssets/Materials/Strap_Mat.mat
+  artifactKey: Guid(81c1860e7800e5340bf8a54c565ba9ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ExampleAssets/Materials/Strap_Mat.mat using Guid(81c1860e7800e5340bf8a54c565ba9ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1330e902992197300ee662d61c59e2cb') in 0,276977 seconds
+  Import took 0,281520 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,000199 seconds.
+  path: Assets/ExampleAssets/Materials/Plastic_Transparent.mat
+  artifactKey: Guid(8a38b7350df9a9c438e568993a00e5c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ExampleAssets/Materials/Plastic_Transparent.mat using Guid(8a38b7350df9a9c438e568993a00e5c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ccb9abe088b03415d95acd7bff6c791') in 0,008182 seconds
+  Import took 0,013148 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26,122847 seconds.
+  path: Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs
+  artifactKey: Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs using Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '056bc30f5bbf7403e696a612547d6149') in 0,000993 seconds
+  Import took 0,005936 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,008234 seconds.
+  path: Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs
+  artifactKey: Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs using Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '056bc30f5bbf7403e696a612547d6149') in 0,000906 seconds
+  Import took 0,005883 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23,049423 seconds.
+  path: Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs
+  artifactKey: Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs using Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '309e405870a13143a53634da052d32a5') in 0,000915 seconds
+  Import took 0,005973 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0,001066 seconds.
+  path: Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs
+  artifactKey: Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs using Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '309e405870a13143a53634da052d32a5') in 0,000993 seconds
+  Import took 0,006002 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003222 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,66 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3,244 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,70 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3217 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 136,0 MB.
+System memory in use after: 134,4 MB.
+
+Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 3776.
+Total: 5,158338 ms (FindLiveObjects: 0,307759 ms CreateObjectMapping: 0,152132 ms MarkObjects: 3,338544 ms  DeleteObjects: 1,358607 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 17,040288 seconds.
+  path: Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs
+  artifactKey: Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs using Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '035cdc62f1dbf73e4803c781c3ff7348') in 0,005031 seconds
+  Import took 0,010039 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003046 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,64 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2,566 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,66 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3217 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 136,1 MB.
+System memory in use after: 134,4 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3780.
+Total: 4,929353 ms (FindLiveObjects: 0,293386 ms CreateObjectMapping: 0,145469 ms MarkObjects: 3,043384 ms  DeleteObjects: 1,445764 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 45,947042 seconds.
+  path: Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs
+  artifactKey: Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TutorialAssets/Scripts/TrajectoryPlanner.cs using Guid(7c5e1d861482e41d7bc3fd8f414e8ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c042a6337282635af5320ab1b93520e') in 0,004723 seconds
+  Import took 0,009638 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003109 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,68 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  5,409 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,63 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3217 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 136,1 MB.
+System memory in use after: 134,5 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3784.
+Total: 5,365169 ms (FindLiveObjects: 0,311314 ms CreateObjectMapping: 0,155237 ms MarkObjects: 3,384696 ms  DeleteObjects: 1,512239 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003455 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,73 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  4,685 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,66 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3217 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 136,1 MB.
+System memory in use after: 134,5 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3788.
+Total: 6,294876 ms (FindLiveObjects: 0,337668 ms CreateObjectMapping: 0,193249 ms MarkObjects: 4,013369 ms  DeleteObjects: 1,731760 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,002969 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 1,31 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1,340 seconds
+Platform modules already initialized, skipping
+Script is not up to date after domain reload: guid(97b5699de26b451b7be219fb4a1edc89) path("Assets/RosMessages/Moveit/srv/SaveMapResponse.cs") state(2)
+Script is not up to date after domain reload: guid(4615d9981c24e6d13aa702185988d014) path("Assets/RosMessages/Moveit/srv/RenameRobotStateInWarehouseRequest.cs") state(2)
+Script is not up to date after domain reload: guid(d02370817310f5f0eb2a3739ed22b848) path("Assets/RosMessages/Moveit/srv/ListRobotStatesInWarehouseResponse.cs") state(2)
+Script is not up to date after domain reload: guid(1a82a9083d487948e989392128e3cee4) path("Assets/RosMessages/Moveit/srv/CheckIfRobotStateExistsInWarehouseRequest.cs") state(2)
+Script is not up to date after domain reload: guid(5ae8aac0debfb55b8ae1f7c0fbf9b93c) path("Assets/RosMessages/Moveit/srv/ApplyPlanningSceneResponse.cs") state(2)
+Script is not up to date after domain reload: guid(5754ef6428ec5d2f98d23adae2b97f8b) path("Assets/RosMessages/Moveit/srv/GetStateValidityResponse.cs") state(2)
+Script is not up to date after domain reload: guid(7071f328566e9fadfad71ebc71490c13) path("Assets/RosMessages/Moveit/srv/ExecuteKnownTrajectoryResponse.cs") state(2)
+Script is not up to date after domain reload: guid(05d933d111abcb1a6b4d439e11f511e7) path("Assets/RosMessages/Moveit/srv/UpdatePointcloudOctomapRequest.cs") state(2)
+Script is not up to date after domain reload: guid(75fd86ba6b791a3acadc4488ad6cb6e7) path("Assets/RosMessages/Moveit/srv/ChangeDriftDimensionsRequest.cs") state(2)
+Script is not up to date after domain reload: guid(e94994ff455d16bbaa139b4fb7114a00) path("Assets/RosMessages/Moveit/srv/UpdatePointcloudOctomapResponse.cs") state(2)
+Script is not up to date after domain reload: guid(fe9c4a0d76832d4e9a4b7e84dd35cd20) path("Assets/RosMessages/Moveit/srv/GetRobotStateFromWarehouseRequest.cs") state(2)
+Script is not up to date after domain reload: guid(0c8ee04549e074f0bbc6f58f563b1f49) path("Assets/RosMessages/Moveit/srv/GetMotionPlanRequest.cs") state(2)
+Script is not up to date after domain reload: guid(f4ab68b8c57357fd99a96eb1b2e0fd01) path("Assets/RosMessages/Moveit/srv/SetPlannerParamsRequest.cs") state(2)
+Script is not up to date after domain reload: guid(4dc789af863d6cfa59ea92e6eea1ae54) path("Assets/RosMessages/Moveit/srv/GetPositionFKResponse.cs") state(2)
+Script is not up to date after domain reload: guid(b44b58601344023c0be870a665bd477b) path("Assets/RosMessages/Moveit/srv/GetPlanningSceneRequest.cs") state(2)
+Script is not up to date after domain reload: guid(a52782f8cc13883f6af1e68c94e65356) path("Assets/RosMessages/Moveit/srv/DeleteRobotStateFromWarehouseRequest.cs") state(2)
+Script is not up to date after domain reload: guid(ed8c26f1df66be726bd5239ac7e75068) path("Assets/RosMessages/Moveit/srv/CheckIfRobotStateExistsInWarehouseResponse.cs") state(2)
+Script is not up to date after domain reload: guid(70a3d3b4bc732ee5db13a2e93ce6f7ba) path("Assets/RosMessages/Moveit/srv/GetCartesianPathRequest.cs") state(2)
+Script is not up to date after domain reload: guid(e598cd709349b0436b5f6693203b3ea3) path("Assets/RosMessages/Moveit/srv/SaveMapRequest.cs") state(2)
+Script is not up to date after domain reload: guid(46e5366601c11200ea0f9446dbb2487d) path("Assets/RosMessages/Moveit/srv/ChangeControlDimensionsResponse.cs") state(2)
+Script is not up to date after domain reload: guid(e0447019974a90d689cf6e6adadbe085) path("Assets/RosMessages/Moveit/srv/QueryPlannerInterfacesRequest.cs") state(2)
+Script is not up to date after domain reload: guid(cd9e52df8326f998ba243222479b66f0) path("Assets/RosMessages/Moveit/srv/GetMotionSequenceRequest.cs") state(2)
+Script is not up to date after domain reload: guid(c443531aa30416fc9b49d25c0967a1e0) path("Assets/RosMessages/Moveit/srv/GetPlannerParamsResponse.cs") state(2)
+Script is not up to date after domain reload: guid(d809f3bc758b03971b9fde4aaa31b86a) path("Assets/RosMessages/Moveit/srv/LoadMapResponse.cs") state(2)
+Script is not up to date after domain reload: guid(81ffd35a1340c925e8e30fc5c9a70b18) path("Assets/RosMessages/Moveit/srv/LoadMapRequest.cs") state(2)
+Script is not up to date after domain reload: guid(52b0348e43cbe71458cffc021ba6416b) path("Assets/RosMessages/Moveit/srv/GetStateValidityRequest.cs") state(2)
+Script is not up to date after domain reload: guid(dba953ea0f79c88daaae797f56c01df1) path("Assets/RosMessages/Moveit/srv/SetPlannerParamsResponse.cs") state(2)
+Script is not up to date after domain reload: guid(93ed29e8a0a0a6e34abaf17fa465e49b) path("Assets/RosMessages/Moveit/srv/GetPlannerParamsRequest.cs") state(2)
+Script is not up to date after domain reload: guid(9902502c5310b4c6d91e39337f72e4b3) path("Assets/RosMessages/Moveit/srv/GetPositionIKResponse.cs") state(2)
+Script is not up to date after domain reload: guid(1a7e8722561df6d498f481fcf5f3c72e) path("Assets/RosMessages/Moveit/srv/RenameRobotStateInWarehouseResponse.cs") state(2)
+Script is not up to date after domain reload: guid(d4adfdddc6de32fa9b2db2791747cbda) path("Assets/RosMessages/Moveit/srv/GetMotionSequenceResponse.cs") state(2)
+Script is not up to date after domain reload: guid(00f7edc885bfd7bba81bfd93badffd4f) path("Assets/RosMessages/Moveit/srv/SaveRobotStateToWarehouseResponse.cs") state(2)
+Script is not up to date after domain reload: guid(71a7349a2a837fb15978cd3a142f55d6) path("Assets/RosMessages/Moveit/srv/DeleteRobotStateFromWarehouseResponse.cs") state(2)
+Script is not up to date after domain reload: guid(72c341394d517ac3186902299cfcd52b) path("Assets/RosMessages/Moveit/srv/ChangeDriftDimensionsResponse.cs") state(2)
+Script is not up to date after domain reload: guid(fcefc1b92daf2f1fa903c85037135fa1) path("Assets/RosMessages/Moveit/srv/ChangeControlDimensionsRequest.cs") state(2)
+Script is not up to date after domain reload: guid(cbc1faa21e43fe0c08e69e2f33332be5) path("Assets/RosMessages/Moveit/srv/ApplyPlanningSceneRequest.cs") state(2)
+Script is not up to date after domain reload: guid(8d901c4f72605a18688a294f2bf40341) path("Assets/RosMessages/Moveit/srv/GetRobotStateFromWarehouseResponse.cs") state(2)
+Script is not up to date after domain reload: guid(b50bdac75317965eb823316cdcd7b33d) path("Assets/RosMessages/Moveit/srv/GetPositionIKRequest.cs") state(2)
+Script is not up to date after domain reload: guid(695a283f3fdf883d6a9db124d17e5df6) path("Assets/RosMessages/Moveit/srv/QueryPlannerInterfacesResponse.cs") state(2)
+Script is not up to date after domain reload: guid(cfaf81fc54755fdb0b29720a3f5e0c01) path("Assets/RosMessages/Moveit/srv/ListRobotStatesInWarehouseRequest.cs") state(2)
+Script is not up to date after domain reload: guid(3d10a97ba1a8e90868615a38cc7f6da9) path("Assets/RosMessages/Moveit/srv/GetMotionPlanResponse.cs") state(2)
+Script is not up to date after domain reload: guid(75c2be3f2c11a17e08d7ac1dc166df62) path("Assets/RosMessages/Moveit/srv/SaveRobotStateToWarehouseRequest.cs") state(2)
+Script is not up to date after domain reload: guid(8a4b69c066acb6057886214e081b830e) path("Assets/RosMessages/Moveit/srv/GraspPlanningRequest.cs") state(2)
+Script is not up to date after domain reload: guid(bda62b95173a487569da7a0233ca6350) path("Assets/RosMessages/Moveit/srv/GraspPlanningResponse.cs") state(2)
+Script is not up to date after domain reload: guid(9a490390b26a3264b84df49879ab619d) path("Assets/RosMessages/Moveit/srv/GetCartesianPathResponse.cs") state(2)
+Script is not up to date after domain reload: guid(f48d136445b11ddd38e58d30f6923a23) path("Assets/RosMessages/Moveit/srv/GetPositionFKRequest.cs") state(2)
+Script is not up to date after domain reload: guid(e3ea47fda5fa4ed7c99654a3f635048f) path("Assets/RosMessages/Moveit/srv/ExecuteKnownTrajectoryRequest.cs") state(2)
+Script is not up to date after domain reload: guid(f16087c9d68d8bd54a9aa9b0aed652a1) path("Assets/RosMessages/Moveit/srv/GetPlanningSceneResponse.cs") state(2)
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,69 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3263 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 139,2 MB.
+System memory in use after: 137,5 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3838.
+Total: 5,400129 ms (FindLiveObjects: 0,361116 ms CreateObjectMapping: 0,212461 ms MarkObjects: 3,101669 ms  DeleteObjects: 1,723484 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003030 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,89 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  5,513 seconds
+Platform modules already initialized, skipping
+Script is not up to date after domain reload: guid(12a24316ed021bec69b9d51ea57b58c1) path("Assets/RosMessages/Moveit/action/MoveGroupActionGoal.cs") state(2)
+Script is not up to date after domain reload: guid(743f77f5ed0ed512980ff71a72b3f4dd) path("Assets/RosMessages/Moveit/action/PlaceFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(d7c03b9511febc455a2e7ba76fc6c581) path("Assets/RosMessages/Moveit/action/PlaceActionGoal.cs") state(2)
+Script is not up to date after domain reload: guid(b9948cbb53df7bb22b94b1e38c8476c1) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(fb642ed04f66896ecae29678cbfd95f6) path("Assets/RosMessages/Moveit/action/PickupAction.cs") state(2)
+Script is not up to date after domain reload: guid(954f91424de14dd68a182206039f2dd5) path("Assets/RosMessages/Moveit/action/PlaceResult.cs") state(2)
+Script is not up to date after domain reload: guid(0cf317ff5b286bd9e8ac0c43872982f8) path("Assets/RosMessages/Moveit/action/PlaceAction.cs") state(2)
+Script is not up to date after domain reload: guid(e72c236131e66d7e0a6cbc48124bac97) path("Assets/RosMessages/Moveit/action/PickupGoal.cs") state(2)
+Script is not up to date after domain reload: guid(3661d46cc3a37a482acc4638ff8a2177) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryResult.cs") state(2)
+Script is not up to date after domain reload: guid(458ab69fc97e99da98ccbb773e51cfb5) path("Assets/RosMessages/Moveit/action/PickupResult.cs") state(2)
+Script is not up to date after domain reload: guid(d8ec1f4eec3f3c6dc862c8cfb2bc6bb3) path("Assets/RosMessages/Moveit/action/PickupActionResult.cs") state(2)
+Script is not up to date after domain reload: guid(e4e5a15ed8940d17c9ec4659075f363b) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceGoal.cs") state(2)
+Script is not up to date after domain reload: guid(e4c02a8e5f48d03cfb99a0b72358c099) path("Assets/RosMessages/Moveit/action/MoveGroupActionFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(ee7edd751a0d2a930bd52bb7f664b74a) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryActionGoal.cs") state(2)
+Script is not up to date after domain reload: guid(0765249deb1e98461923f21cb9f28932) path("Assets/RosMessages/Moveit/action/MoveGroupAction.cs") state(2)
+Script is not up to date after domain reload: guid(c752cb4874883d77f8cb474c40910186) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceResult.cs") state(2)
+Script is not up to date after domain reload: guid(dc6d3a1b669cc2cc2b9986cf11cefb10) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(585a107d4896f0694a7f60e69ea3bd9b) path("Assets/RosMessages/Moveit/action/MoveGroupGoal.cs") state(2)
+Script is not up to date after domain reload: guid(997212c146bd9233cad5d9ade203ba4a) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryActionResult.cs") state(2)
+Script is not up to date after domain reload: guid(206024d346a47d3ffa1147da56196490) path("Assets/RosMessages/Moveit/action/PlaceGoal.cs") state(2)
+Script is not up to date after domain reload: guid(a2b613c787954836c9d9b142782fe902) path("Assets/RosMessages/Moveit/action/MoveGroupFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(540f324a844e2de2a81f068198ea81ec) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceActionGoal.cs") state(2)
+Script is not up to date after domain reload: guid(90d4c77ccf1cf0c40ba203ba9b7c0c1c) path("Assets/RosMessages/Moveit/action/PickupActionGoal.cs") state(2)
+Script is not up to date after domain reload: guid(acdf909e55baea6a794eabde1654314b) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryAction.cs") state(2)
+Script is not up to date after domain reload: guid(557450eaa0cc8c408a267dcb78ec6f24) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryGoal.cs") state(2)
+Script is not up to date after domain reload: guid(9c3f02cd34f80db94803a5692ba7457a) path("Assets/RosMessages/Moveit/action/MoveGroupActionResult.cs") state(2)
+Script is not up to date after domain reload: guid(65bb190767cdb1557b28fcb9d0a0aca3) path("Assets/RosMessages/Moveit/action/PickupActionFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(00d9f40b0694c0a2882da0acbc6c0492) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceAction.cs") state(2)
+Script is not up to date after domain reload: guid(4891252189ce571cdb037dbfbea51c5d) path("Assets/RosMessages/Moveit/action/ExecuteTrajectoryActionFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(e79fb25e2fbe42dac84f0213dfa197e1) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceActionFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(add8c23627b828e8190f667d6649a07b) path("Assets/RosMessages/Moveit/action/MoveGroupResult.cs") state(2)
+Script is not up to date after domain reload: guid(7dec2057b949b4cc9b0c8b3d1205fd8d) path("Assets/RosMessages/Moveit/action/MoveGroupSequenceActionResult.cs") state(2)
+Script is not up to date after domain reload: guid(26331d9f7c5ab50d8b599f2ed0069892) path("Assets/RosMessages/Moveit/action/PlaceActionFeedback.cs") state(2)
+Script is not up to date after domain reload: guid(46b5d49db3495f2da86e29712d3025ce) path("Assets/RosMessages/Moveit/action/PlaceActionResult.cs") state(2)
+Script is not up to date after domain reload: guid(67fe951501b3dc89382dce5064eae888) path("Assets/RosMessages/Moveit/action/PickupFeedback.cs") state(2)
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,65 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3311 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 140,3 MB.
+System memory in use after: 138,6 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3890.
+Total: 5,395661 ms (FindLiveObjects: 0,309879 ms CreateObjectMapping: 0,147589 ms MarkObjects: 3,353270 ms  DeleteObjects: 1,583786 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003116 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,73 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  4,609 seconds
+Platform modules already initialized, skipping
+Script is not up to date after domain reload: guid(1af60f29669a09068b142b67c094d074) path("Assets/RosMessages/RosTcpEndpoint/msg/RosUnityErrorMsg.cs") state(2)
+Script is not up to date after domain reload: guid(a86397d814991d5aba79ef2fdfc7e273) path("Assets/RosMessages/RosTcpEndpoint/srv/UnityHandshakeRequest.cs") state(2)
+Script is not up to date after domain reload: guid(4f1d7a37055559a56a0d2dc55d68f581) path("Assets/RosMessages/RosTcpEndpoint/srv/UnityHandshakeResponse.cs") state(2)
+Script is not up to date after domain reload: guid(b2ba1965603efa3ba8fc0f75119a89a7) path("Assets/RosMessages/RosTcpEndpoint/msg/RosUnitySysCommandMsg.cs") state(2)
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,65 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3346 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141,1 MB.
+System memory in use after: 139,5 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3929.
+Total: 5,490075 ms (FindLiveObjects: 0,315932 ms CreateObjectMapping: 0,171184 ms MarkObjects: 3,454758 ms  DeleteObjects: 1,546971 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,002941 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,72 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  4,261 seconds
+Platform modules already initialized, skipping
+Script is not up to date after domain reload: guid(9717811e24926b414b0407d6152bfea8) path("Assets/RosMessages/Ur3Moveit/msg/UR3MoveitJointsMsg.cs") state(2)
+Script is not up to date after domain reload: guid(342cba16db28f21fd8ff71b9d757769d) path("Assets/RosMessages/Ur3Moveit/srv/MoverServiceRequest.cs") state(2)
+Script is not up to date after domain reload: guid(cc98e58acb9570d088dcd92e07697151) path("Assets/RosMessages/Ur3Moveit/msg/UR3TrajectoryMsg.cs") state(2)
+Script is not up to date after domain reload: guid(482b3fcc187503bd28f878ea1b0eb98d) path("Assets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceResponse.cs") state(2)
+Script is not up to date after domain reload: guid(359b0d343b0b15a94a12bcc23b88f2a0) path("Assets/RosMessages/Ur3Moveit/srv/PoseEstimationServiceRequest.cs") state(2)
+Script is not up to date after domain reload: guid(8cd01e6e3c1465b63b63f9f406e61bda) path("Assets/RosMessages/Ur3Moveit/srv/MoverServiceResponse.cs") state(2)
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,80 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3350 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141,2 MB.
+System memory in use after: 139,6 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3937.
+Total: 5,492674 ms (FindLiveObjects: 0,304791 ms CreateObjectMapping: 0,164236 ms MarkObjects: 3,279291 ms  DeleteObjects: 1,743334 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,002966 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,66 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3,455 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,69 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3356 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141,4 MB.
+System memory in use after: 139,7 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3947.
+Total: 5,528774 ms (FindLiveObjects: 0,297848 ms CreateObjectMapping: 0,177157 ms MarkObjects: 3,465007 ms  DeleteObjects: 1,587716 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,003180 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Refreshing native plugins compatible for Editor in 0,81 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  5,518 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0,84 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 3356 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 141,4 MB.
+System memory in use after: 139,7 MB.
+
+Unloading 65 unused Assets to reduce memory usage. Loaded Objects now: 3951.
+Total: 6,094990 ms (FindLiveObjects: 0,335933 ms CreateObjectMapping: 0,178852 ms MarkObjects: 3,831375 ms  DeleteObjects: 1,747118 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
