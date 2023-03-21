@@ -51,6 +51,11 @@ public class TrajectoryPlanner : MonoBehaviour
     string[] lines;
     int ind = -1;
 
+    //From Pose Estimation
+    private RenderTexture renderTexture;
+    private const int isBigEndian = 0;
+    private const int step = 4;
+
 
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
@@ -65,6 +70,116 @@ public class TrajectoryPlanner : MonoBehaviour
     // ROS Connector
     ROSConnection m_Ros;
 
+    /// <summary>
+    ///     Capture the main camera's render texture and convert to bytes.
+    /// </summary>
+    /// <returns>imageBytes</returns>
+    private byte[] CaptureScreenshot()
+    {
+        // Camera.main.depthTextureMode = DepthTextureMode.Depth;
+        // Camera.main.targetTexture = renderTexture;
+        // RenderTexture currentRT = RenderTexture.active;
+        // RenderTexture.active = renderTexture;
+        // Camera.main.Render();
+        // Texture2D mainCameraTexture = new Texture2D(renderTexture.width, renderTexture.height);
+        // mainCameraTexture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        // mainCameraTexture.Apply();
+        // RenderTexture.active = currentRT;
+        // // Get the raw byte info from the screenshot
+        // byte[] imageBytes = mainCameraTexture.GetRawTextureData();
+        // Camera.main.targetTexture = null;
+        // return imageBytes;
+
+        Camera.main.depthTextureMode = DepthTextureMode.Depth;
+        Camera cam = Camera.main;
+        RenderTexture render_tex = cam.targetTexture;
+        int W = render_tex.width;
+        int H = render_tex.height;
+        //far_clip = cam.farClipPlane;
+
+        // we will get the RGB-D image in this Texture2D on the CPU
+        Texture2D rgbd_im = new Texture2D(W, H, TextureFormat.RGBAFloat, false);
+
+        // GPU -> CPU
+        RenderTexture prev = RenderTexture.active;
+        RenderTexture.active = render_tex;
+        rgbd_im.ReadPixels(new Rect(0, 0, W, H), 0, 0);
+        byte[] imageBytes = rgbd_im.EncodeToPNG();
+        //rgbd_im.Apply();
+        RenderTexture.active = null;
+        //byte[] imageBytes = rgbd_im.GetRawTextureData();
+
+        return imageBytes;
+    }
+
+
+    
+    /// <summary>
+    ///     Create a new PoseEstimationServiceRequest with the captured screenshot as bytes and instantiates 
+    ///     a sensor_msgs/image.
+    ///
+    ///     Call the PoseEstimationService using the ROSConnection and calls PoseEstimationCallback on the 
+    ///     PoseEstimationServiceResponse.
+    /// </summary>
+    /// <param name="imageData"></param>
+    private void InvokePoseEstimationService(byte[] imageData)
+    {
+        uint imageHeight = (uint)renderTexture.height;
+        uint imageWidth = (uint)renderTexture.width;
+
+        RosMessageTypes.Sensor.ImageMsg rosImage = new RosMessageTypes.Sensor.ImageMsg(new RosMessageTypes.Std.HeaderMsg(), imageWidth, imageHeight, "RGBA", isBigEndian, step, imageData);
+        PoseEstimationServiceRequest poseServiceRequest = new PoseEstimationServiceRequest(rosImage);           
+        m_Ros.SendServiceMessage<PoseEstimationServiceResponse>("pose_estimation_srv", poseServiceRequest, PoseEstimationCallback);
+        Debug.Log("10");
+	}
+
+    void PoseEstimationCallback(PoseEstimationServiceResponse response)
+	{
+        Debug.Log("11");
+        /*if (response != null)
+        {
+            // The position output by the model is the position of the cube relative to the camera so we need to extract its global position 
+            var estimatedPosition = Camera.main.transform.TransformPoint(response.estimated_pose.position.From<RUF>());
+            var estimatedRotation = Camera.main.transform.rotation * response.estimated_pose.orientation.From<RUF>();
+
+            PublishJoints(estimatedPosition, estimatedRotation);
+
+            EstimatedPos.text = estimatedPosition.ToString();
+            EstimatedRot.text = estimatedRotation.eulerAngles.ToString();
+        }
+        else {
+            InitializeButton.interactable = true;
+            RandomizeButton.interactable = true;
+        }
+        */
+        Debug.Log("HEllo");
+    }
+
+        /// <summary>
+    ///     Button callback for the Pose Estimation
+    /// </summary>
+    public void PoseEstimation(){
+        Debug.Log("Capturing screenshot...");
+
+        // InitializeButton.interactable = false;
+        // RandomizeButton.interactable = false;
+        // ServiceButton.interactable = false;
+        // ActualPos.text = target.transform.position.ToString();
+        // ActualRot.text = target.transform.eulerAngles.ToString();
+        // EstimatedPos.text = "-";
+        // EstimatedRot.text = "-";
+
+        // Capture the screenshot and pass it to the pose estimation service
+        byte[] pngBytes = CaptureScreenshot();
+        // uint imageHeight = (uint)renderTexture.height;
+        // uint imageWidth = (uint)renderTexture.width;
+        // Texture2D target = new Texture2D((int)imageWidth,(int)imageHeight);
+        // target.LoadRawTextureData(rawImageData);
+        // target.Apply();
+        // byte[] pngBytes = target.EncodeToPNG();
+        File.WriteAllBytes(dir+"screen.png", pngBytes);
+        InvokePoseEstimationService(pngBytes);
+    }
 
     /// <summary>
     ///     Find all robot joints in Awake() and add them to the jointArticulationBodies array.
@@ -91,6 +206,10 @@ public class TrajectoryPlanner : MonoBehaviour
 
         m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
         m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
+
+        // Render texture 
+        renderTexture = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 24, UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_SRGB);
+        renderTexture.Create();
     }
 
     /// <summary>
