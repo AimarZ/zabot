@@ -50,15 +50,26 @@ public class ReachabilityConstraint : PlacementConstraint
         Vector2 placementPt = new Vector2(placementX, placementZ);
         Vector2 basePt = new Vector2(robotX, robotZ);
         float distance = Vector2.Distance(placementPt, basePt);
+        bool pass;
         if (limitType == LimitType.max)
         {
-            bool pass = distance < robotReachabilityLimit;
-            return pass;
+            pass = distance < robotReachabilityLimit;   
         }
         else
         {
-            return distance > robotReachabilityLimit;
+            pass = distance > robotReachabilityLimit;
         }
+        if (!pass)
+            return false;
+            
+        //CUSTOM
+        Vector2 backPlacement = new Vector2((float)-0.017, (float)-0.277); 
+        Vector2 rightSidePlacement = new Vector2((float)0.445, (float)0.374);
+        Vector2 leftSidePlacement = new Vector2((float)-0.483, (float)0.374);   
+        distance = Vector2.Distance(placementPt, backPlacement);
+        float distance2 = Vector2.Distance(placementPt, rightSidePlacement);
+        float distance3 = Vector2.Distance(placementPt, leftSidePlacement);
+        return distance > 0.2 && distance2 > 0.33 && distance3 > 0.33 && placementZ>-0.11 && placementZ<0.267; 
     }
 }
 
