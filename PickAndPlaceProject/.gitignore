@@ -8,10 +8,11 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
-/[Uu]ser[Ss]ettings/
-/[Aa]ssets/[Rr]os[Mm]essages/
+/[Uu]ser[Ss]ettings/*
 /[Aa]ssets/[Rr]os[Mm]essages.meta
-/[Aa]ssets/Captures~/
+/[Aa]ssets/Captures~/*
+
+!/[Aa]ssets/[Rr]os[Mm]essages/Unity.Robotics.RosMessages.asmdef
 
 
 # MemoryCaptures can get excessive in size.
