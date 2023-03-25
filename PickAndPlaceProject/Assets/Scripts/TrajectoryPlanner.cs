@@ -7,6 +7,10 @@ using RosMessageTypes.NiryoMoveit;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using UnityEngine;
+using UnityEngine.UI;
+using Quaternion = UnityEngine.Quaternion;
+using Transform = UnityEngine.Transform;
+using Vector3 = UnityEngine.Vector3;
 
 public class TrajectoryPlanner : MonoBehaviour
 {
@@ -23,7 +27,7 @@ public class TrajectoryPlanner : MonoBehaviour
     [SerializeField]
     GameObject m_NiryoOne;
     public GameObject NiryoOne { get => m_NiryoOne; set => m_NiryoOne = value; }
-
+    
     [SerializeField]
     GameObject m_RedCan;
     public GameObject RedCan { get => m_RedCan; set => m_RedCan = value; }
@@ -56,6 +60,15 @@ public class TrajectoryPlanner : MonoBehaviour
     private const int isBigEndian = 0;
     private const int step = 4;
 
+    private Button InitializeButton;
+    private Button RandomizeButton;
+
+    public PoseEstimationScenario scenario;
+
+    // [SerializeField]
+    // PoseEstimationScenario m_scenario;
+    // public PoseEstimationScenario scenario { get => m_scenario; set => m_scenario = value; }
+
 
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
@@ -69,6 +82,60 @@ public class TrajectoryPlanner : MonoBehaviour
 
     // ROS Connector
     ROSConnection m_Ros;
+
+    /// <summary>
+    ///     Button callback for the Cube Randomization
+    /// </summary>
+    public void RandomizeCube(){
+        scenario.Move();
+        // ActualPos.text = target.transform.position.ToString();
+        // ActualRot.text = target.transform.eulerAngles.ToString();
+    }
+
+    /// <summary>
+    ///     Button callback for setting the robot to default position
+    /// </summary>
+    // public void Initialize(){
+    //     StartCoroutine(MoveToInitialPosition());
+    // }
+
+    // private IEnumerator MoveToInitialPosition()
+    // {
+    //     bool isRotationFinished = false;
+    //     while (!isRotationFinished)
+    //     {
+    //         isRotationFinished = ResetRobotToDefaultPosition();
+    //         yield return new WaitForSeconds(jointAssignmentWait);
+    //     }
+    //     ServiceButton.interactable = true;
+    // }
+
+    // private bool ResetRobotToDefaultPosition()
+    // {
+    //     bool isRotationFinished = true;
+    //     var rotationSpeed = 180f;
+
+    //     for (int i = 0; i < numRobotJoints; i++)
+    //     {
+    //         var tempXDrive = jointArticulationBodies[i].xDrive;
+    //         float currentRotation = tempXDrive.target;
+            
+    //         float rotationChange = rotationSpeed * Time.fixedDeltaTime;
+            
+    //         if (currentRotation > 0f) rotationChange *= -1;
+            
+    //         if (Mathf.Abs(currentRotation) < rotationChange)
+    //             rotationChange = 0;
+    //         else
+    //             isRotationFinished = false;
+            
+    //         // the new xDrive target is the currentRotation summed with the desired change
+    //         float rotationGoal = currentRotation + rotationChange;
+    //         tempXDrive.target = rotationGoal;
+    //         jointArticulationBodies[i].xDrive = tempXDrive;
+    //     }
+    //     return isRotationFinished;
+    // }
 
     /// <summary>
     ///     Capture the main camera's render texture and convert to bytes.
@@ -200,12 +267,18 @@ public class TrajectoryPlanner : MonoBehaviour
             m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<ArticulationBody>();
         }
 
+        pickObjects = new GameObject[] {m_RedCube, m_GreenCube, m_BlueCube};
+        placeObjects = new GameObject[]  {m_RedCan, m_GreenCan, m_BlueCan};
+
         // Find left and right fingers
         var rightGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_right/right_gripper";
         var leftGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_left/left_gripper";
 
         m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
         m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
+
+        InitializeButton = GameObject.Find("Canvas/InitializeButton").GetComponent<Button>();
+        RandomizeButton = GameObject.Find("Canvas/RandomizeButton").GetComponent<Button>();
 
         // Render texture 
         renderTexture = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 24, UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_SRGB);
@@ -267,15 +340,12 @@ public class TrajectoryPlanner : MonoBehaviour
     public void PublishJoints()
     {
         var request = new MoverServiceRequest();
-        request.joints_input = CurrentJointConfig();
-
-        pickObjects = new GameObject[] {m_RedCube, m_GreenCube, m_BlueCube};
-        placeObjects = new GameObject[]  {m_RedCan, m_GreenCan, m_BlueCan};
+        request.joints_input = CurrentJointConfig();;
 
         lines = File.ReadAllLines(dir+textFile);
         ind = Int32.Parse(lines[0]);
         File.WriteAllLines(dir+textFile, lines.Skip(1).ToArray());
-
+        
         // Pick Pose
         request.pick_pose = new PoseMsg
         {

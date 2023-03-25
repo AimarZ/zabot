@@ -65,11 +65,15 @@ public class ReachabilityConstraint : PlacementConstraint
         //CUSTOM
         Vector2 backPlacement = new Vector2((float)-0.017, (float)-0.277); 
         Vector2 rightSidePlacement = new Vector2((float)0.445, (float)0.374);
-        Vector2 leftSidePlacement = new Vector2((float)-0.483, (float)0.374);   
+        Vector2 leftSidePlacement = new Vector2((float)-0.445, (float)0.374);   
+        Vector2 rightBackSidePlacement = new Vector2((float)0.355, (float)-0.111);
+        Vector2 leftBackSidePlacement = new Vector2((float)-0.355, (float)-0.111); 
         distance = Vector2.Distance(placementPt, backPlacement);
         float distance2 = Vector2.Distance(placementPt, rightSidePlacement);
         float distance3 = Vector2.Distance(placementPt, leftSidePlacement);
-        return distance > 0.2 && distance2 > 0.33 && distance3 > 0.33 && placementZ>-0.11 && placementZ<0.267; 
+        float distance4 = Vector2.Distance(placementPt, rightBackSidePlacement);
+        float distance5 = Vector2.Distance(placementPt, leftBackSidePlacement);
+        return distance > 0.2 && distance2 > 0.33 && distance3 > 0.33 && distance4 > 0.14 && distance5 > 0.14 && placementZ>-0.11 && placementZ<0.267 && placementX>-0.35 && placementX<0.35; 
     }
 }
 
