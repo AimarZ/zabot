@@ -1249,6 +1249,7 @@ MonoBehaviour:
   m_Randomizers:
   - id: 0
   - id: 1
+  - id: 2
   constants:
     randomSeed: 539662031
     totalFrames: 1000
@@ -1263,7 +1264,7 @@ MonoBehaviour:
         rotationRange:
           collapsed: 0
           value:
-            id: 2
+            id: 3
     00000001:
       type: {class: RobotArmObjectPositionRandomizer, ns: , asm: Unity.Robotics.PickAndPlace}
       data:
@@ -1275,11 +1276,78 @@ MonoBehaviour:
         minRobotReachability: 0.2
         maxRobotReachability: 0.4
     00000002:
+      type: {class: LightRandomizer, ns: , asm: Unity.Robotics.PickAndPlace}
+      data:
+        m_Enabled: 1
+        collapsed: 0
+        lightIntensityParameter:
+          collapsed: 0
+          value:
+            id: 4
+        rotationX:
+          collapsed: 0
+          value:
+            id: 5
+        rotationY:
+          collapsed: 0
+          value:
+            id: 6
+        lightColorParameter:
+          collapsed: 0
+          red:
+            id: 7
+          green:
+            id: 8
+          blue:
+            id: 9
+          alpha:
+            id: 10
+    00000003:
       type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         range:
           minimum: 0
           maximum: 360
+    00000004:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: 0.9
+          maximum: 1.1
+    00000005:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: 40
+          maximum: 80
+    00000006:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: -180
+          maximum: 180
+    00000007:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: 0.5
+          maximum: 1
+    00000008:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: 0.5
+          maximum: 1
+    00000009:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: 0.5
+          maximum: 1
+    0000000A:
+      type: {class: ConstantSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        value: 1
 --- !u!4 &230223897
 Transform:
   m_ObjectHideFlags: 0
@@ -7708,6 +7776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886251103}
   - component: {fileID: 886251102}
+  - component: {fileID: 886251104}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -7791,6 +7860,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 123.556, y: -30, z: 0}
+--- !u!114 &886251104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886251101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6697c88eb555964b4b21b0b1c20becb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &890275555
 PrefabInstance:
   m_ObjectHideFlags: 0

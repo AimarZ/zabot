@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-from ur3_moveit.setup_and_run_model import *
+from niryo_moveit.setup_and_run_model import *
 
 import rospy
 import io
 import os
 import math
 
-from ur3_moveit.srv import PoseEstimationService, PoseEstimationServiceResponse
+from niryo_moveit.srv import PoseEstimationService, PoseEstimationServiceResponse
 from PIL import Image, ImageOps
 from geometry_msgs.msg import Point, Quaternion, Pose
 from scipy.spatial.transform import Rotation as R

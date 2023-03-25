@@ -12,7 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   controller_manager
   roslaunch
   trajectory_msgs
-)
+  rospy
+  )
+
+catkin_python_setup()
+
 roslaunch_add_file_check(launch)
 
 add_message_files(DIRECTORY msg)
@@ -28,6 +32,7 @@ generate_messages(
 )
 
 catkin_package()
+
 
 catkin_install_python(PROGRAMS
   scripts/mover.py

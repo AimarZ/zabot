@@ -59,7 +59,7 @@ public class GetFrameRGBD : MonoBehaviour
     ///     Button callback for the Pose Estimation
     /// </summary>
     public void Update(){
-        Debug.Log("Capturing screenshot...");
+        //Debug.Log("Capturing screenshot...");
 
         // InitializeButton.interactable = false;
         // RandomizeButton.interactable = false;
