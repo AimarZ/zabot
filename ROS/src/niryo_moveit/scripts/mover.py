@@ -13,6 +13,7 @@ import moveit_msgs.msg
 from moveit_msgs.msg import Constraints, JointConstraint, PositionConstraint, OrientationConstraint, BoundingVolume
 from sensor_msgs.msg import JointState
 from moveit_msgs.msg import RobotState
+from moveit_msgs.msg import PoseScale
 import geometry_msgs.msg
 from geometry_msgs.msg import Quaternion, Pose
 from std_msgs.msg import String
@@ -75,6 +76,8 @@ def plan_pick_and_place(req):
     group_name = "arm"
     move_group = moveit_commander.MoveGroupCommander(group_name)
 
+    scaleY = req.scaleY
+
     current_robot_joint_configuration = req.joints_input.joints
 
     # Pre grasp - position gripper directly above target object in 2 steps
@@ -99,7 +102,7 @@ def plan_pick_and_place(req):
 
     # Grasp - lower gripper so that fingers are on either side of object
     pick_pose = copy.deepcopy(req.pick_pose)
-    pick_pose.position.z -= 0.05  # Static value coming from Unity, TODO: pass along with request
+    pick_pose.position.z -= scaleY  # Static value coming from Unity, TODO: pass along with request
     grasp_pose = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
     
     if not grasp_pose.joint_trajectory.points:
@@ -108,7 +111,7 @@ def plan_pick_and_place(req):
     previous_ending_joint_angles = grasp_pose.joint_trajectory.points[-1].positions
 
     # Pick Up - raise gripper back to the pre grasp position in 2 steps
-    pick_pose.position.z += 0.05
+    pick_pose.position.z += scaleY
     pick_pose.position.z += 0.05
     pick_up_pose = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
     

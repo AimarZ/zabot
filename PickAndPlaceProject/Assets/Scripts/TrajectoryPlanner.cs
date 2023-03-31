@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using RosMessageTypes.Geometry;
 using RosMessageTypes.NiryoMoveit;
+using RosMessageTypes.Moveit;
 using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using UnityEngine;
@@ -72,7 +73,7 @@ public class TrajectoryPlanner : MonoBehaviour
 
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
-    readonly Vector3 m_PickOffset = Vector3.up * 0.1f;
+    readonly Vector3 m_PickOffset = Vector3.up * 0.075f;
     readonly Vector3 m_PlaceOffset = Vector3.up * 0.3f;
 
     // Articulation Bodies
@@ -346,12 +347,17 @@ public class TrajectoryPlanner : MonoBehaviour
         ind = Int32.Parse(lines[0]);
         File.WriteAllLines(dir+textFile, lines.Skip(1).ToArray());
 
-        float scaleYWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size).y;
+        Vector3 scaleWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size);
+        Vector3 size = pickObjects[ind].GetComponent<MeshRenderer>().bounds.size; 
+        Debug.Log(size*100);
         
+        request.scaleY = size.y;
+
         // Pick Pose
         request.pick_pose = new PoseMsg
         {
-            position = (pickObjects[ind].transform.position + m_PickOffset).To<FLU>(),
+            position = (pickObjects[ind].transform.position + m_PickOffset+ Vector3.up*size.y).To<FLU>(),
+            
 
             // The hardcoded x/z angles assure that the gripper is always positioned above the target cube before grasping.
             orientation = Quaternion.Euler(90, pickObjects[ind].transform.eulerAngles.y, 0).To<FLU>()

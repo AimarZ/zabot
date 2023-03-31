@@ -16,19 +16,22 @@ namespace RosMessageTypes.NiryoMoveit
         public NiryoMoveitJointsMsg joints_input;
         public Geometry.PoseMsg pick_pose;
         public Geometry.PoseMsg place_pose;
+        public double scaleY;
 
         public MoverServiceRequest()
         {
             this.joints_input = new NiryoMoveitJointsMsg();
             this.pick_pose = new Geometry.PoseMsg();
             this.place_pose = new Geometry.PoseMsg();
+            this.scaleY = 0.0;
         }
 
-        public MoverServiceRequest(NiryoMoveitJointsMsg joints_input, Geometry.PoseMsg pick_pose, Geometry.PoseMsg place_pose)
+        public MoverServiceRequest(NiryoMoveitJointsMsg joints_input, Geometry.PoseMsg pick_pose, Geometry.PoseMsg place_pose, double scaleY)
         {
             this.joints_input = joints_input;
             this.pick_pose = pick_pose;
             this.place_pose = place_pose;
+            this.scaleY = scaleY;
         }
 
         public static MoverServiceRequest Deserialize(MessageDeserializer deserializer) => new MoverServiceRequest(deserializer);
@@ -38,6 +41,7 @@ namespace RosMessageTypes.NiryoMoveit
             this.joints_input = NiryoMoveitJointsMsg.Deserialize(deserializer);
             this.pick_pose = Geometry.PoseMsg.Deserialize(deserializer);
             this.place_pose = Geometry.PoseMsg.Deserialize(deserializer);
+            deserializer.Read(out this.scaleY);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
@@ -45,6 +49,7 @@ namespace RosMessageTypes.NiryoMoveit
             serializer.Write(this.joints_input);
             serializer.Write(this.pick_pose);
             serializer.Write(this.place_pose);
+            serializer.Write(this.scaleY);
         }
 
         public override string ToString()
@@ -52,7 +57,8 @@ namespace RosMessageTypes.NiryoMoveit
             return "MoverServiceRequest: " +
             "\njoints_input: " + joints_input.ToString() +
             "\npick_pose: " + pick_pose.ToString() +
-            "\nplace_pose: " + place_pose.ToString();
+            "\nplace_pose: " + place_pose.ToString() +
+            "\nscaleY: " + scaleY.ToString();
         }
 
 #if UNITY_EDITOR
