@@ -345,6 +345,8 @@ public class TrajectoryPlanner : MonoBehaviour
         lines = File.ReadAllLines(dir+textFile);
         ind = Int32.Parse(lines[0]);
         File.WriteAllLines(dir+textFile, lines.Skip(1).ToArray());
+
+        float scaleYWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size).y;
         
         // Pick Pose
         request.pick_pose = new PoseMsg

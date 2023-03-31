@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class GetFrameRGBD : MonoBehaviour
 {
-    static int frame = -3;
+    static int frame = -1;
     string dir = "Assets/Captures~/";
 
     /// <summary>
@@ -69,7 +69,7 @@ public class GetFrameRGBD : MonoBehaviour
         // EstimatedPos.text = "-";
         // EstimatedRot.text = "-";
         frame++;
-        if (frame>-1){
+        if (frame>1 && frame>24999){
             // Capture the screenshot and pass it to the pose estimation service
             byte[] pngBytes = CaptureScreenshot();
             // uint imageHeight = (uint)renderTexture.height;
@@ -79,7 +79,7 @@ public class GetFrameRGBD : MonoBehaviour
             // target.Apply();
             // byte[] pngBytes = target.EncodeToPNG();
             
-            File.WriteAllBytes(dir+"screen"+frame.ToString()+".png", pngBytes);
+            File.WriteAllBytes(dir+"rgb_"+frame.ToString()+".png", pngBytes);
         }
         
     }

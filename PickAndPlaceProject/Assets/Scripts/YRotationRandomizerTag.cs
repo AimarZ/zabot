@@ -14,4 +14,9 @@ public class YRotationRandomizerTag : RandomizerTag
     {
         transform.eulerAngles = new Vector3(originalRotation.x, yRotation, originalRotation.z);
     }
+
+    public void SetScale(float scalex, float scaley, float scalez)
+    {
+        transform.localScale = new Vector3(1.3f*scalex,1.2f*scaley,1.3f*scalez);
+    }
 }

@@ -1373,7 +1373,7 @@ MonoBehaviour:
   - id: 2
   constants:
     randomSeed: 539662031
-    totalFrames: 1000
+    totalFrames: 30000
   automaticIteration: 0
   references:
     version: 1
@@ -1386,6 +1386,11 @@ MonoBehaviour:
           collapsed: 0
           value:
             id: 3
+        scaleRange:
+          collapsed: 0
+          value:
+            id: 4
+        uniformScale: 0
     00000001:
       type: {class: RobotArmObjectPositionRandomizer, ns: , asm: Unity.Robotics.PickAndPlace}
       data:
@@ -1404,25 +1409,25 @@ MonoBehaviour:
         lightIntensityParameter:
           collapsed: 0
           value:
-            id: 4
+            id: 5
         rotationX:
           collapsed: 0
           value:
-            id: 5
+            id: 6
         rotationY:
           collapsed: 0
           value:
-            id: 6
+            id: 7
         lightColorParameter:
           collapsed: 0
           red:
-            id: 7
-          green:
             id: 8
-          blue:
+          green:
             id: 9
-          alpha:
+          blue:
             id: 10
+          alpha:
+            id: 11
     00000003:
       type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
@@ -1433,26 +1438,26 @@ MonoBehaviour:
       type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         range:
+          minimum: 0.5
+          maximum: 1.5
+    00000005:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
           minimum: 0.9
           maximum: 1.1
-    00000005:
+    00000006:
       type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         range:
           minimum: 40
           maximum: 80
-    00000006:
+    00000007:
       type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         range:
           minimum: -180
           maximum: 180
-    00000007:
-      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
-      data:
-        range:
-          minimum: 0.5
-          maximum: 1
     00000008:
       type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
@@ -1466,6 +1471,12 @@ MonoBehaviour:
           minimum: 0.5
           maximum: 1
     0000000A:
+      type: {class: UniformSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
+      data:
+        range:
+          minimum: 0.5
+          maximum: 1
+    0000000B:
       type: {class: ConstantSampler, ns: UnityEngine.Perception.Randomization.Samplers, asm: Unity.Perception.Runtime}
       data:
         value: 1
@@ -9369,7 +9380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc58d7031aa57ff768ab2556e13c0ae0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6391
+      value: 0.641
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc58d7031aa57ff768ab2556e13c0ae0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9966,7 +9977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1230935088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10795,7 +10806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e47f22d55e18c710a41ab7eaf38a0fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6391
+      value: 0.641
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3e47f22d55e18c710a41ab7eaf38a0fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11198,7 +11209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5e038d4d3fe0844b4bf954c86f72b7be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.624
+      value: 0.629
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5e038d4d3fe0844b4bf954c86f72b7be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11469,7 +11480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49a7b2642bef6411ea3fa662ac1b4cd9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6391
+      value: 0.641
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49a7b2642bef6411ea3fa662ac1b4cd9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11638,7 +11649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daf0cc0aa899c9647a291c15204a7284, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.628
+      value: 0.629
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: daf0cc0aa899c9647a291c15204a7284, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11813,7 +11824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614953935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.171, y: 0.624, z: 0.092}
+  m_LocalPosition: {x: 0.171, y: 0.629, z: 0.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12803,7 +12814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b619bc108059e99fa9920f971250ad96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.627
+      value: 0.629
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b619bc108059e99fa9920f971250ad96, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14284,10 +14295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2739b11a8980aa48b52271bc429c745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAxis: 0
-  jointName: gripper_joint_right
-  EffortLimit: 1000
-  VelocityLimit: 1000
+  xAxis: -1363005600
+  jointName: .cs
+  EffortLimit: 6.93164410933663e-310
+  VelocityLimit: 6.9316441093461e-310
 --- !u!171741748 &2018967602
 ArticulationBody:
   m_ObjectHideFlags: 0
