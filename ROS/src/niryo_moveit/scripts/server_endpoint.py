@@ -17,8 +17,8 @@ def main():
     # Start the Server Endpoint with a ROS communication objects dictionary for routing messages
     tcp_server.start({
         #'UR3Trajectory': RosSubscriber('UR3Trajectory', UR3Trajectory, tcp_server),
-        #'ur3_moveit': RosService('ur3_moveit', MoverService),
-        'pose_estimation_srv': RosService('pose_estimation_service', PoseEstimationService)
+        #'niryo_moveit': RosService('niryo_moveit', MoverService),
+        'pose_estimation_srv': RosService('pose_estimation_srv', PoseEstimationService)
     })
 
     rospy.spin()

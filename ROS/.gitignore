@@ -1,2 +1,4 @@
 build
 devel
+src/niryo_moveit/models/*.tar
+src/niryo_moveit/images/*

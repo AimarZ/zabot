@@ -16,7 +16,8 @@ def preload():
 class PoseEstimationNetwork(torch.nn.Module):
     """
     PoseEstimationNetwork: Neural network based on the VGG16 neural network
-    architecture. The model is a little bit different from the original one
+    architecture developed by Tobin at al. (https://arxiv.org/pdf/1703.06907.pdf). 
+    The model is a little bit different from the original one
     but we still import the model as it has already been trained on a huge
     dataset (ImageNet) and even if we change a bit its architecture, the main
     body of it is unchanged and the weights of the final model will not be too
@@ -28,37 +29,48 @@ class PoseEstimationNetwork(torch.nn.Module):
     """
 
     def __init__(self, *, is_symetric):
+        torch.autograd.set_detect_anomaly(True)
         super(PoseEstimationNetwork, self).__init__()
         self.is_symetric = is_symetric
         self.model_backbone = torchvision.models.vgg16(pretrained=True) # uses cache
         # remove the original classifier
         self.model_backbone.classifier = torch.nn.Identity()
-        
+        self.num_cubes = 3
+
         self.translation_block = torch.nn.Sequential(
             torch.nn.Linear(25088, 256),
             torch.nn.ReLU(inplace=True),
             torch.nn.Linear(256, 64),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(64, 3),
+            torch.nn.Linear(64, 3*self.num_cubes),
         )
         self.orientation_block = torch.nn.Sequential(
             torch.nn.Linear(25088, 256),
             torch.nn.ReLU(inplace=True),
             torch.nn.Linear(256, 64),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(64, 4),
-            LinearNormalized(),
+            torch.nn.Linear(64, 4*self.num_cubes),
+            LinearNormalized(self.num_cubes),
+        )
+        self.scaleY_block = torch.nn.Sequential(
+            torch.nn.Linear(25088, 256),
+            torch.nn.ReLU(inplace=True),
+            torch.nn.Linear(256, 64),
+            torch.nn.ReLU(inplace=True),
+            torch.nn.Linear(64, self.num_cubes)
         )
 
     def forward(self, x):
         x = self.model_backbone(x)
         output_translation = self.translation_block(x)
+        output_scaleY = self.scaleY_block(x)
 
-        if (self.is_symetric == False):
+        if self.is_symetric == False:
             output_orientation = self.orientation_block(x)
-            return output_translation, output_orientation
-        
-        return output_translation
+            return output_translation, output_orientation, output_scaleY
+
+        return output_translation, output_scaleY
+
 
 class LinearNormalized(torch.nn.Module):
     """
@@ -68,8 +80,9 @@ class LinearNormalized(torch.nn.Module):
     normalized vector
     """
 
-    def __init__(self):
+    def __init__(self, num_cubes):
         super(LinearNormalized, self).__init__()
+        self.num_cubes = num_cubes
 
     def forward(self, x):
         return self._linear_normalized(x)
@@ -80,17 +93,24 @@ class LinearNormalized(torch.nn.Module):
         It will be used in the orientation network because
         a quaternion is a normalized vector.
         Args:
-            x (pytorch tensor with shape (batch_size, 4)): the input of the model
+            x (pytorch tensor with shape (batch_size, 4*num_cubes)): the input of the model
         Returns:
-            a pytorch tensor normalized vector with shape(batch_size, 4)
+            a pytorch tensor normalized vector with shape(batch_size, 4*num_cubes)
         """
-        norm = torch.norm(x, p=2, dim=1).unsqueeze(0)
-        for index in range(norm.shape[1]):
-            if norm[0, index].item() == 0.0:
-                norm[0, index] = 1.0
-        x = torch.transpose(x, 0, 1)
-        x = torch.div(x, norm)
-        return torch.transpose(x, 0, 1)
+        for i in range(self.num_cubes):
+          norm = torch.norm(x[:,i*4:4*(i+1)], p=2, dim=1).unsqueeze(0)
+          for index in range(norm.shape[1]):
+              if norm[0, index].item() == 0.0:
+                  norm[0, index] = 1.0
+          y = torch.transpose(x[:,i*4:4*(i+1)], 0, 1)
+          y = torch.div(y, norm)
+          y = torch.transpose(y, 0, 1)
+          if i==0:
+            aux = y
+          else:
+            aux = torch.cat((aux,y),dim=1)
+        x = aux
+        return x
 
 
 def pre_process_image(path_image, device):
@@ -134,6 +154,6 @@ def run_model_main(image_file_png, model_file_name):
         model.eval()
 
     image = pre_process_image(image_file_png, device)
-    output_translation, output_orientation = model(torch.stack(image).reshape(-1, 3, 224, 224).to(device))
-    output_translation, output_orientation = output_translation.cpu().detach().numpy(), output_orientation.cpu().detach().numpy()
-    return output_orientation, output_translation
+    output_translation, output_orientation, output_scaleY = model(torch.stack(image).reshape(-1, 3, 224, 224).to(device))
+    output_translation, output_orientation, output_scaleY = output_translation.cpu().detach().numpy(), output_orientation.cpu().detach().numpy(), output_scaleY.cpu().detach().numpy()
+    return output_translation, output_orientation,  output_scaleY

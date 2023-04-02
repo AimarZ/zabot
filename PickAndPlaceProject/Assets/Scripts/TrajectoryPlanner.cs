@@ -61,8 +61,8 @@ public class TrajectoryPlanner : MonoBehaviour
     private const int isBigEndian = 0;
     private const int step = 4;
 
-    private Button InitializeButton;
     private Button RandomizeButton;
+    private Button PublishButton;
 
     public PoseEstimationScenario scenario;
 
@@ -93,50 +93,6 @@ public class TrajectoryPlanner : MonoBehaviour
         // ActualRot.text = target.transform.eulerAngles.ToString();
     }
 
-    /// <summary>
-    ///     Button callback for setting the robot to default position
-    /// </summary>
-    // public void Initialize(){
-    //     StartCoroutine(MoveToInitialPosition());
-    // }
-
-    // private IEnumerator MoveToInitialPosition()
-    // {
-    //     bool isRotationFinished = false;
-    //     while (!isRotationFinished)
-    //     {
-    //         isRotationFinished = ResetRobotToDefaultPosition();
-    //         yield return new WaitForSeconds(jointAssignmentWait);
-    //     }
-    //     ServiceButton.interactable = true;
-    // }
-
-    // private bool ResetRobotToDefaultPosition()
-    // {
-    //     bool isRotationFinished = true;
-    //     var rotationSpeed = 180f;
-
-    //     for (int i = 0; i < numRobotJoints; i++)
-    //     {
-    //         var tempXDrive = jointArticulationBodies[i].xDrive;
-    //         float currentRotation = tempXDrive.target;
-            
-    //         float rotationChange = rotationSpeed * Time.fixedDeltaTime;
-            
-    //         if (currentRotation > 0f) rotationChange *= -1;
-            
-    //         if (Mathf.Abs(currentRotation) < rotationChange)
-    //             rotationChange = 0;
-    //         else
-    //             isRotationFinished = false;
-            
-    //         // the new xDrive target is the currentRotation summed with the desired change
-    //         float rotationGoal = currentRotation + rotationChange;
-    //         tempXDrive.target = rotationGoal;
-    //         jointArticulationBodies[i].xDrive = tempXDrive;
-    //     }
-    //     return isRotationFinished;
-    // }
 
     /// <summary>
     ///     Capture the main camera's render texture and convert to bytes.
@@ -172,10 +128,11 @@ public class TrajectoryPlanner : MonoBehaviour
         RenderTexture prev = RenderTexture.active;
         RenderTexture.active = render_tex;
         rgbd_im.ReadPixels(new Rect(0, 0, W, H), 0, 0);
-        byte[] imageBytes = rgbd_im.EncodeToPNG();
+        byte[] pngBytes = rgbd_im.EncodeToPNG();
         //rgbd_im.Apply();
         RenderTexture.active = null;
-        //byte[] imageBytes = rgbd_im.GetRawTextureData();
+        byte[] imageBytes = rgbd_im.GetRawTextureData();
+        imageBytes = pngBytes;
 
         return imageBytes;
     }
@@ -194,43 +151,67 @@ public class TrajectoryPlanner : MonoBehaviour
     {
         uint imageHeight = (uint)renderTexture.height;
         uint imageWidth = (uint)renderTexture.width;
-
         RosMessageTypes.Sensor.ImageMsg rosImage = new RosMessageTypes.Sensor.ImageMsg(new RosMessageTypes.Std.HeaderMsg(), imageWidth, imageHeight, "RGBA", isBigEndian, step, imageData);
         PoseEstimationServiceRequest poseServiceRequest = new PoseEstimationServiceRequest(rosImage);           
         m_Ros.SendServiceMessage<PoseEstimationServiceResponse>("pose_estimation_srv", poseServiceRequest, PoseEstimationCallback);
-        Debug.Log("10");
+
 	}
 
     void PoseEstimationCallback(PoseEstimationServiceResponse response)
 	{
-        Debug.Log("11");
-        /*if (response != null)
+        if (response != null)
         {
+            
             // The position output by the model is the position of the cube relative to the camera so we need to extract its global position 
-            var estimatedPosition = Camera.main.transform.TransformPoint(response.estimated_pose.position.From<RUF>());
-            var estimatedRotation = Camera.main.transform.rotation * response.estimated_pose.orientation.From<RUF>();
+            var estimatedPosition1 = Camera.main.transform.TransformPoint(response.estimated_pose1.position.From<RUF>());
+            var estimatedRotation1 = Camera.main.transform.rotation * response.estimated_pose1.orientation.From<RUF>();
+            var estimatedScaleY1 = response.estimated_scaleY1;
 
-            PublishJoints(estimatedPosition, estimatedRotation);
+            var estimatedPosition2 = Camera.main.transform.TransformPoint(response.estimated_pose2.position.From<RUF>());
+            var estimatedRotation2 = Camera.main.transform.rotation * response.estimated_pose2.orientation.From<RUF>();
+            var estimatedScaleY2 = response.estimated_scaleY2;
 
-            EstimatedPos.text = estimatedPosition.ToString();
-            EstimatedRot.text = estimatedRotation.eulerAngles.ToString();
+            var estimatedPosition3 = Camera.main.transform.TransformPoint(response.estimated_pose3.position.From<RUF>());
+            var estimatedRotation3 = Camera.main.transform.rotation * response.estimated_pose3.orientation.From<RUF>();
+            var estimatedScaleY3 = response.estimated_scaleY3;
+
+
+            PublishJoints(estimatedPosition1, estimatedRotation1, estimatedScaleY1);
+
+            // while(!RandomizeButton.interactable){
+            //     ;
+            // }
+
+            // Debug.Log("17");
+
+            // PublishJoints(estimatedPosition2, estimatedRotation2, estimatedScaleY2);
+
+            // while(!RandomizeButton.interactable){
+            //     ;
+            // }
+
+            // PublishJoints(estimatedPosition3, estimatedRotation3, estimatedScaleY3);
+
+
+
+            //EstimatedPos.text = estimatedPosition.ToString();
+            //EstimatedRot.text = estimatedRotation.eulerAngles.ToString();
         }
         else {
-            InitializeButton.interactable = true;
-            RandomizeButton.interactable = true;
+            Debug.Log("17")            RandomizeButton.interactable = true;
+            PublishButton.interactable = true;
         }
-        */
-        Debug.Log("HEllo");
     }
 
-        /// <summary>
+
+    /// <summary>
     ///     Button callback for the Pose Estimation
     /// </summary>
     public void PoseEstimation(){
         Debug.Log("Capturing screenshot...");
 
-        // InitializeButton.interactable = false;
-        // RandomizeButton.interactable = false;
+        RandomizeButton.interactable = false;
+        PublishButton.interactable = false;
         // ServiceButton.interactable = false;
         // ActualPos.text = target.transform.position.ToString();
         // ActualRot.text = target.transform.eulerAngles.ToString();
@@ -238,53 +219,19 @@ public class TrajectoryPlanner : MonoBehaviour
         // EstimatedRot.text = "-";
 
         // Capture the screenshot and pass it to the pose estimation service
-        byte[] pngBytes = CaptureScreenshot();
+        byte[] imgBytes = CaptureScreenshot();
         // uint imageHeight = (uint)renderTexture.height;
         // uint imageWidth = (uint)renderTexture.width;
         // Texture2D target = new Texture2D((int)imageWidth,(int)imageHeight);
         // target.LoadRawTextureData(rawImageData);
         // target.Apply();
         // byte[] pngBytes = target.EncodeToPNG();
-        File.WriteAllBytes(dir+"screen.png", pngBytes);
-        InvokePoseEstimationService(pngBytes);
+        
+        //File.WriteAllBytes(dir+"screen.png", pngBytes);
+        InvokePoseEstimationService(imgBytes);
     }
 
-    /// <summary>
-    ///     Find all robot joints in Awake() and add them to the jointArticulationBodies array.
-    ///     Find left and right finger joints and assign them to their respective articulation body objects.
-    /// </summary>
-    void Start()
-    {
-        // Get ROS connection static instance
-        m_Ros = ROSConnection.GetOrCreateInstance();
-        m_Ros.RegisterRosService<MoverServiceRequest, MoverServiceResponse>(m_RosServiceName);
-
-        m_JointArticulationBodies = new ArticulationBody[k_NumRobotJoints];
-
-        var linkName = string.Empty;
-        for (var i = 0; i < k_NumRobotJoints; i++)
-        {
-            linkName += SourceDestinationPublisher.LinkNames[i];
-            m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<ArticulationBody>();
-        }
-
-        pickObjects = new GameObject[] {m_RedCube, m_GreenCube, m_BlueCube};
-        placeObjects = new GameObject[]  {m_RedCan, m_GreenCan, m_BlueCan};
-
-        // Find left and right fingers
-        var rightGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_right/right_gripper";
-        var leftGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_left/left_gripper";
-
-        m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
-        m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
-
-        InitializeButton = GameObject.Find("Canvas/InitializeButton").GetComponent<Button>();
-        RandomizeButton = GameObject.Find("Canvas/RandomizeButton").GetComponent<Button>();
-
-        // Render texture 
-        renderTexture = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 24, UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_SRGB);
-        renderTexture.Create();
-    }
+    
 
     /// <summary>
     ///     Close the gripper
@@ -338,7 +285,7 @@ public class TrajectoryPlanner : MonoBehaviour
     ///     Call the MoverService using the ROSConnection and if a trajectory is successfully planned,
     ///     execute the trajectories in a coroutine.
     /// </summary>
-    public void PublishJoints()
+    public void PublishJoints(Vector3 targetPos, Quaternion targetRot, float targetScaleY)
     {
         var request = new MoverServiceRequest();
         request.joints_input = CurrentJointConfig();;
@@ -350,17 +297,22 @@ public class TrajectoryPlanner : MonoBehaviour
         Vector3 scaleWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size);
         Vector3 size = pickObjects[ind].GetComponent<MeshRenderer>().bounds.size; 
         Debug.Log(size*100);
+        Debug.Log(targetScaleY*100);
         
         request.scaleY = size.y;
+
+        Debug.Log(pickObjects[ind].transform.position);
+        Debug.Log(targetPos);
+
 
         // Pick Pose
         request.pick_pose = new PoseMsg
         {
-            position = (pickObjects[ind].transform.position + m_PickOffset+ Vector3.up*size.y).To<FLU>(),
+            position = (targetPos + m_PickOffset+ Vector3.up*size.y).To<FLU>(),
             
 
             // The hardcoded x/z angles assure that the gripper is always positioned above the target cube before grasping.
-            orientation = Quaternion.Euler(90, pickObjects[ind].transform.eulerAngles.y, 0).To<FLU>()
+            orientation = Quaternion.Euler(90, targetRot.eulerAngles.y, 0).To<FLU>()
         };
 
         // Place Pose
@@ -383,6 +335,8 @@ public class TrajectoryPlanner : MonoBehaviour
         else
         {
             Debug.LogError("No trajectory returned from MoverService.");
+            RandomizeButton.interactable = true;
+            PublishButton.interactable = true;
         }
     }
 
@@ -436,9 +390,50 @@ public class TrajectoryPlanner : MonoBehaviour
                 yield return new WaitForSeconds(k_PoseAssignmentWait);
             }
 
+            PublishButton.interactable = true;
+            RandomizeButton.interactable = true;
+
             // All trajectories have been executed, open the gripper to place the target cube
             //OpenGripper();
         }
+    }
+
+    /// <summary>
+    ///     Find all robot joints in Awake() and add them to the jointArticulationBodies array.
+    ///     Find left and right finger joints and assign them to their respective articulation body objects.
+    /// </summary>
+    void Start()
+    {
+        // Get ROS connection static instance
+        m_Ros = ROSConnection.GetOrCreateInstance();
+        m_Ros.RegisterRosService<MoverServiceRequest, MoverServiceResponse>(m_RosServiceName);
+        m_Ros.RegisterRosService<PoseEstimationServiceRequest, PoseEstimationServiceResponse>("pose_estimation_srv");
+
+        m_JointArticulationBodies = new ArticulationBody[k_NumRobotJoints];
+
+        var linkName = string.Empty;
+        for (var i = 0; i < k_NumRobotJoints; i++)
+        {
+            linkName += SourceDestinationPublisher.LinkNames[i];
+            m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<ArticulationBody>();
+        }
+
+        pickObjects = new GameObject[] {m_RedCube, m_GreenCube, m_BlueCube};
+        placeObjects = new GameObject[]  {m_RedCan, m_GreenCan, m_BlueCan};
+
+        // Find left and right fingers
+        var rightGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_right/right_gripper";
+        var leftGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_left/left_gripper";
+
+        m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
+        m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
+
+        RandomizeButton = GameObject.Find("Canvas/RandomizeButton").GetComponent<Button>();
+        PublishButton = GameObject.Find("Canvas/PublishButton").GetComponent<Button>();
+
+        // Render texture 
+        renderTexture = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 24, UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_SRGB);
+        renderTexture.Create();
     }
 
     enum Poses

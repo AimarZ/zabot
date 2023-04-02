@@ -1,3 +1,9 @@
 sensor_msgs/Image image
 ---
-geometry_msgs/Pose estimated_pose
+geometry_msgs/Pose estimated_pose1
+geometry_msgs/Pose estimated_pose2
+geometry_msgs/Pose estimated_pose3
+float32 estimated_scaleY1
+float32 estimated_scaleY2
+float32 estimated_scaleY3
+
