@@ -197,8 +197,8 @@ public class TrajectoryPlanner : MonoBehaviour
             //EstimatedPos.text = estimatedPosition.ToString();
             //EstimatedRot.text = estimatedRotation.eulerAngles.ToString();
         }
-        else {
-            Debug.Log("17")            RandomizeButton.interactable = true;
+        else {         
+            RandomizeButton.interactable = true;
             PublishButton.interactable = true;
         }
     }
