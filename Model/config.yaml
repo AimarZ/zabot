@@ -1,0 +1,34 @@
+estimator: UR3_single_cube_model
+num_cubes: 3
+train:
+  dataset_zip_file_name_training: UR3_single_cube_training
+  batch_training_size: 30
+  accumulation_steps: 10
+  epochs: 25
+  beta_loss: 1
+  sample_size_train: 0
+val:
+  dataset_zip_file_name_validation: UR3_single_cube_validation
+  batch_validation_size: 30
+  eval_freq: 4
+  sample_size_val: 0
+test:
+  dataset_zip_file_name_test: UR3_single_cube_validation
+  batch_test_size: 30
+  sample_size_test: 0
+dataset:
+  image_scale: 224
+  download_data_gcp: False
+  gcs_bucket: None
+  pose_estimation_gcs_path: None
+  symmetric: False
+adam_optimizer:
+  lr: 0.0002
+  beta_1: 0.9
+  beta_2: 0.999
+checkpoint:
+  load_dir_checkpoint: /home/aimar/Documentos/output_models/UR3_single_cube_model_ep25.tar
+  save_frequency: 1
+system:
+  log_dir_system: /home/aimar/Documentos/output_models
+  data_root: /home/aimar/Documentos/Scale_Train30k_Val3k
