@@ -13,7 +13,6 @@ import moveit_msgs.msg
 from moveit_msgs.msg import Constraints, JointConstraint, PositionConstraint, OrientationConstraint, BoundingVolume
 from sensor_msgs.msg import JointState
 from moveit_msgs.msg import RobotState
-from moveit_msgs.msg import PoseScale
 import geometry_msgs.msg
 from geometry_msgs.msg import Quaternion, Pose
 from std_msgs.msg import String
