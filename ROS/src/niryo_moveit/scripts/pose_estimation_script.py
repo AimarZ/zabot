@@ -14,7 +14,7 @@ from scipy.spatial.transform import Rotation as R
 
 NODE_NAME = "PoseEstimationNode"
 PACKAGE_LOCATION = os.path.dirname(os.path.realpath(__file__))[:-(len("/scripts"))] # remove "/scripts"
-MODEL_PATH = PACKAGE_LOCATION + "/models/UR3_single_cube_model.tar"
+MODEL_PATH = PACKAGE_LOCATION + "/models/Niryo_1by1_model_mix_ep12-24.tar"
 
 count = 0
 
@@ -54,10 +54,11 @@ def _run_model(image_path):
     positionV = output[0].flatten()
     quaternionV = output[1].flatten()
     scaleYV = output[2].flatten()
-    return positionV, quaternionV, scaleYV
+    classV = output[3].flatten()
+    return positionV, quaternionV, scaleYV, classV
 
 
-def _format_response(est_position, est_rotation, est_scaleY):
+def _format_response(est_position, est_rotation, est_scaleY, est_class):
     """ format the computed estimated position/rotation as a service response
        Args:
            est_position (float[]): object estimated x,y,z
@@ -66,62 +67,29 @@ def _format_response(est_position, est_rotation, est_scaleY):
            response (PoseEstimationServiceResponse): service response object
        """
 
-    position1 = Point()
-    position1.x = est_position[0]
-    position1.y = est_position[1]
-    position1.z = est_position[2]
+    position = Point()
+    position.x = est_position[0]
+    position.y = est_position[1]
+    position.z = est_position[2]
 
-    position2 = Point()
-    position2.x = est_position[3]
-    position2.y = est_position[4]
-    position2.z = est_position[5]
-
-    position3 = Point()
-    position3.x = est_position[6]
-    position3.y = est_position[7]
-    position3.z = est_position[8]
-
-    rotation1 = Quaternion()
-    rotation1.x = est_rotation[0]
-    rotation1.y = est_rotation[1]
-    rotation1.z = est_rotation[2]
-    rotation1.w = est_rotation[3]
+    rotation = Quaternion()
+    rotation.x = est_rotation[0]
+    rotation.y = est_rotation[1]
+    rotation.z = est_rotation[2]
+    rotation.w = est_rotation[3]
     
-    rotation2 = Quaternion()
-    rotation2.x = est_rotation[4]
-    rotation2.y = est_rotation[5]
-    rotation2.z = est_rotation[6]
-    rotation2.w = est_rotation[7]
+    scaleY = est_scaleY[0]
 
-    rotation3 = Quaternion()
-    rotation3.x = est_rotation[8]
-    rotation3.y = est_rotation[9]
-    rotation3.z = est_rotation[10]
-    rotation3.w = est_rotation[11]
+    label = est_class[0]
     
-    scaleY1 = est_scaleY[0]
-    scaleY2 = est_scaleY[1]
-    scaleY3 = est_scaleY[2]
-    
-    pose1 = Pose()
-    pose1.position = position1
-    pose1.orientation = rotation1
-    
-    pose2 = Pose()
-    pose2.position = position2
-    pose2.orientation = rotation2
-
-    pose3 = Pose()
-    pose3.position = position3
-    pose3.orientation = rotation3
+    pose = Pose()
+    pose.position = position
+    pose.orientation = rotation
 
     response = PoseEstimationServiceResponse()
-    response.estimated_pose1 = pose1
-    response.estimated_pose2 = pose2
-    response.estimated_pose3 = pose3
-    response.estimated_scaleY1 = scaleY1
-    response.estimated_scaleY2 = scaleY2
-    response.estimated_scaleY3 = scaleY3
+    response.estimated_pose = pose
+    response.estimated_scaleY = scaleY
+    response.estimated_class = label
     return response
 
 
@@ -135,8 +103,8 @@ def pose_estimation_main(req):
     print("Started estimation pipeline")
     image_path = _save_image(req)
     print("Predicting from screenshot " + image_path)
-    est_position, est_rotation, est_scaleY = _run_model(image_path)
-    response = _format_response(est_position, est_rotation, est_scaleY)
+    est_position, est_rotation, est_scaleY, est_class = _run_model(image_path)
+    response = _format_response(est_position, est_rotation, est_scaleY, est_class)
     print("Finished estimation pipeline\n")
     return response
 

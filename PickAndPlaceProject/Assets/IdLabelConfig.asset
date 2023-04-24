@@ -13,11 +13,17 @@ MonoBehaviour:
   m_Name: IdLabelConfig
   m_EditorClassIdentifier: 
   m_LabelEntries:
-  - label: red_cube_position
-    id: 0
-  - label: green_cube_position
+  - label: green_cube1
     id: 1
-  - label: blue_cube_position
+  - label: green_cube2
     id: 2
+  - label: blue_cube1
+    id: 3
+  - label: blue_cube2
+    id: 4
+  - label: yellow_cube1
+    id: 5
+  - label: yellow_cube2
+    id: 6
   autoAssignIds: 1
   startingLabelId: 1

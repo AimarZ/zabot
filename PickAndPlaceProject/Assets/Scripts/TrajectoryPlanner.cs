@@ -20,7 +20,7 @@ public class TrajectoryPlanner : MonoBehaviour
     const float k_JointAssignmentWait = 0.1f;
     const float k_PoseAssignmentWait = 0.5f;
 
-    // Variables required for ROS communication
+    // Variables requiYellow for ROS communication
     [SerializeField]
     string m_RosServiceName = "niryo_moveit";
     public string RosServiceName { get => m_RosServiceName; set => m_RosServiceName = value; }
@@ -28,26 +28,35 @@ public class TrajectoryPlanner : MonoBehaviour
     [SerializeField]
     GameObject m_NiryoOne;
     public GameObject NiryoOne { get => m_NiryoOne; set => m_NiryoOne = value; }
-    
-    [SerializeField]
-    GameObject m_RedCan;
-    public GameObject RedCan { get => m_RedCan; set => m_RedCan = value; }
+
     [SerializeField]
     GameObject m_GreenCan;
     public GameObject GreenCan { get => m_GreenCan; set => m_GreenCan = value; }
     [SerializeField]
     GameObject m_BlueCan;
-    public GameObject BlueCan { get => m_BlueCan; set => m_BlueCan = value; }
+    public GameObject BlueCan { get => m_BlueCan; set => m_BlueCan = value; }       
+    [SerializeField]
+    GameObject m_YellowCan;
+    public GameObject YellowCan { get => m_YellowCan; set => m_YellowCan = value; }
 
     [SerializeField]
-    GameObject m_RedCube;
-    public GameObject RedCube { get => m_RedCube; set => m_RedCube = value; }
+    GameObject m_GreenCube1;
+    public GameObject GreenCube1 { get => m_GreenCube1; set => m_GreenCube1 = value; }
     [SerializeField]
-    GameObject m_GreenCube;
-    public GameObject GreenCube { get => m_GreenCube; set => m_GreenCube = value; }
+    GameObject m_GreenCube2;
+    public GameObject GreenCube2 { get => m_GreenCube2; set => m_GreenCube2 = value; }
     [SerializeField]
-    GameObject m_BlueCube;
-    public GameObject BlueCube { get => m_BlueCube; set => m_BlueCube = value; }
+    GameObject m_BlueCube1;
+    public GameObject BlueCube1 { get => m_BlueCube1; set => m_BlueCube1 = value; }
+    [SerializeField]
+    GameObject m_BlueCube2;
+    public GameObject BlueCube2 { get => m_BlueCube2; set => m_BlueCube2 = value; }
+    [SerializeField]
+    GameObject m_YellowCube1;
+    public GameObject YellowCube1 { get => m_YellowCube1; set => m_YellowCube1 = value; }
+    [SerializeField]
+    GameObject m_YellowCube2;
+    public GameObject YellowCube2 { get => m_YellowCube2; set => m_YellowCube2 = value; }
 
     private GameObject[] pickObjects;
     private GameObject[] placeObjects;
@@ -62,7 +71,13 @@ public class TrajectoryPlanner : MonoBehaviour
     private const int step = 4;
 
     private Button RandomizeButton;
+    private Button InitializeButton;
     private Button PublishButton;
+    private Button RandomizeButton2;
+    private Button PublishButton2;
+    private Button InitializeButton2;
+
+    private GameObject niryo_shoulder_link;
 
     public PoseEstimationScenario scenario;
 
@@ -73,7 +88,8 @@ public class TrajectoryPlanner : MonoBehaviour
 
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
-    readonly Vector3 m_PickOffset = Vector3.up * 0.075f;
+    //readonly Vector3 m_PickOffset = Vector3.up * 0.075f;
+    readonly Vector3 m_PickOffset = Vector3.up * 0;
     readonly Vector3 m_PlaceOffset = Vector3.up * 0.3f;
 
     // Articulation Bodies
@@ -91,6 +107,86 @@ public class TrajectoryPlanner : MonoBehaviour
         scenario.Move();
         // ActualPos.text = target.transform.position.ToString();
         // ActualRot.text = target.transform.eulerAngles.ToString();
+    }
+
+    /// <summary>
+    ///     Button callback for setting the robot to default position
+    /// </summary>
+    public void Initialize(){
+        PublishButton.interactable = false;
+        PublishButton2.interactable = false;
+        InitializeButton.interactable = false;
+        InitializeButton2.interactable = false;
+        StartCoroutine(MoveToInitialPosition());
+    }
+
+    private IEnumerator MoveToInitialPosition()
+    {
+        bool isRotationFinished = false;
+        while (!isRotationFinished)
+        {
+            isRotationFinished = ResetRobotToDefaultPosition2();
+            yield return new WaitForSeconds(k_JointAssignmentWait);
+        }
+        InitializeButton.interactable = true;
+        InitializeButton2.interactable = true;
+        PublishButton.interactable = true;
+        PublishButton2.interactable = true;
+    }
+
+    private bool ResetRobotToDefaultPosition()
+    {
+        bool isRotationFinished = true;
+        var rotationSpeed = 90f;
+
+        for (int i = 0; i < k_NumRobotJoints; i++)
+        {
+            var tempXDrive = m_JointArticulationBodies[i].xDrive;
+            float currentRotation = tempXDrive.target;
+            
+            float rotationChange = rotationSpeed * Time.fixedDeltaTime;
+            
+            if (currentRotation > 0f) rotationChange *= -1;
+            
+            if (Mathf.Abs(currentRotation) < rotationChange)
+                rotationChange = 0;
+            else
+                isRotationFinished = false;
+            
+            // the new xDrive target is the currentRotation summed with the desired change
+            float rotationGoal = currentRotation + rotationChange;
+            tempXDrive.target = rotationGoal;
+            m_JointArticulationBodies[i].xDrive = tempXDrive;
+        }
+        return isRotationFinished;
+    }
+
+    private bool ResetRobotToDefaultPosition2()
+    {
+        bool isRotationFinished = true;
+        var rotationSpeed = 120f;
+
+        for (int i = 0; i < k_NumRobotJoints; i++)
+        {
+            var tempXDrive = m_JointArticulationBodies[i].xDrive;
+            float currentRotation = tempXDrive.target;
+            float rotationChange = rotationSpeed * Time.fixedDeltaTime;
+            float targetRotation = 0f;
+            if (i==0)
+                targetRotation = 130f;
+            if (currentRotation > targetRotation) rotationChange *= -1;
+            
+            if (Mathf.Abs(currentRotation-targetRotation) < rotationChange)
+                rotationChange = 0;
+            else
+                isRotationFinished = false;
+            
+            // the new xDrive target is the currentRotation summed with the desired change
+            float rotationGoal = currentRotation + rotationChange;
+            tempXDrive.target = rotationGoal;
+            m_JointArticulationBodies[i].xDrive = tempXDrive;
+        }
+        return isRotationFinished;
     }
 
 
@@ -140,7 +236,7 @@ public class TrajectoryPlanner : MonoBehaviour
 
     
     /// <summary>
-    ///     Create a new PoseEstimationServiceRequest with the captured screenshot as bytes and instantiates 
+    ///     Create a new PoseEstimationServiceRequest with the captuYellow screenshot as bytes and instantiates 
     ///     a sensor_msgs/image.
     ///
     ///     Call the PoseEstimationService using the ROSConnection and calls PoseEstimationCallback on the 
@@ -163,43 +259,22 @@ public class TrajectoryPlanner : MonoBehaviour
         {
             
             // The position output by the model is the position of the cube relative to the camera so we need to extract its global position 
-            var estimatedPosition1 = Camera.main.transform.TransformPoint(response.estimated_pose1.position.From<RUF>());
-            var estimatedRotation1 = Camera.main.transform.rotation * response.estimated_pose1.orientation.From<RUF>();
-            var estimatedScaleY1 = response.estimated_scaleY1;
-
-            var estimatedPosition2 = Camera.main.transform.TransformPoint(response.estimated_pose2.position.From<RUF>());
-            var estimatedRotation2 = Camera.main.transform.rotation * response.estimated_pose2.orientation.From<RUF>();
-            var estimatedScaleY2 = response.estimated_scaleY2;
-
-            var estimatedPosition3 = Camera.main.transform.TransformPoint(response.estimated_pose3.position.From<RUF>());
-            var estimatedRotation3 = Camera.main.transform.rotation * response.estimated_pose3.orientation.From<RUF>();
-            var estimatedScaleY3 = response.estimated_scaleY3;
+            var estimatedPosition = Camera.main.transform.TransformPoint(response.estimated_pose.position.From<RUF>());
+            var estimatedRotation = Camera.main.transform.rotation * response.estimated_pose.orientation.From<RUF>();
+            var estimatedScaleY = response.estimated_scaleY;
+            var estimatedClass = response.estimated_class;
 
 
-            PublishJoints(estimatedPosition1, estimatedRotation1, estimatedScaleY1);
+            PublishJoints(estimatedPosition, estimatedRotation, estimatedScaleY, estimatedClass);
 
-            // while(!RandomizeButton.interactable){
-            //     ;
-            // }
-
-            // Debug.Log("17");
-
-            // PublishJoints(estimatedPosition2, estimatedRotation2, estimatedScaleY2);
-
-            // while(!RandomizeButton.interactable){
-            //     ;
-            // }
-
-            // PublishJoints(estimatedPosition3, estimatedRotation3, estimatedScaleY3);
-
-
-
-            //EstimatedPos.text = estimatedPosition.ToString();
-            //EstimatedRot.text = estimatedRotation.eulerAngles.ToString();
         }
         else {         
             RandomizeButton.interactable = true;
+            InitializeButton.interactable = true;
             PublishButton.interactable = true;
+            RandomizeButton2.interactable = true;
+            PublishButton2.interactable = true;
+            InitializeButton2.interactable = true;
         }
     }
 
@@ -211,7 +286,11 @@ public class TrajectoryPlanner : MonoBehaviour
         Debug.Log("Capturing screenshot...");
 
         RandomizeButton.interactable = false;
+        InitializeButton.interactable = false;
         PublishButton.interactable = false;
+        RandomizeButton2.interactable = false;
+        PublishButton2.interactable = false;
+        InitializeButton2.interactable = false;
         // ServiceButton.interactable = false;
         // ActualPos.text = target.transform.position.ToString();
         // ActualRot.text = target.transform.eulerAngles.ToString();
@@ -219,11 +298,18 @@ public class TrajectoryPlanner : MonoBehaviour
         // EstimatedRot.text = "-";
 
         // Capture the screenshot and pass it to the pose estimation service
+
         byte[] imgBytes = CaptureScreenshot();
+
+        // niryo_shoulder_link.transform.eulerAngles = new Vector3(
+        //     niryo_shoulder_link.transform.eulerAngles.x,
+        //     0,
+        //     niryo_shoulder_link.transform.eulerAngles.z
+        // );
         // uint imageHeight = (uint)renderTexture.height;
         // uint imageWidth = (uint)renderTexture.width;
         // Texture2D target = new Texture2D((int)imageWidth,(int)imageHeight);
-        // target.LoadRawTextureData(rawImageData);
+        // target.LoadRawTextuYellowata(rawImageData);
         // target.Apply();
         // byte[] pngBytes = target.EncodeToPNG();
         
@@ -285,23 +371,41 @@ public class TrajectoryPlanner : MonoBehaviour
     ///     Call the MoverService using the ROSConnection and if a trajectory is successfully planned,
     ///     execute the trajectories in a coroutine.
     /// </summary>
-    public void PublishJoints(Vector3 targetPos, Quaternion targetRot, float targetScaleY)
-    {
+    public void PublishJoints(Vector3 targetPos, Quaternion targetRot, float targetScaleY, int label)
+    {   
+        if (label == 0){
+            Debug.Log("There is no object");
+            return;
+        }
+
+        
+        print(pickObjects[0].transform.position);
+        //print(Quaternion.Euler(90, pickObjects[0].eulerAngles.y, 0));
+        print(pickObjects[0].transform.rotation);
         var request = new MoverServiceRequest();
         request.joints_input = CurrentJointConfig();;
 
-        lines = File.ReadAllLines(dir+textFile);
-        ind = Int32.Parse(lines[0]);
-        File.WriteAllLines(dir+textFile, lines.Skip(1).ToArray());
-
-        Vector3 scaleWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size);
-        Vector3 size = pickObjects[ind].GetComponent<MeshRenderer>().bounds.size; 
+        //lines = File.ReadAllLines(dir+textFile);
+        //ind = Int32.Parse(lines[0]);
+        //File.WriteAllLines(dir+textFile, lines.Skip(1).ToArray());
+        int objind = 0;
+        float maxHeight = 0;
+        for(int i=0;i<=5;i++){
+            if (pickObjects[i].transform.position.y > 0 && pickObjects[i].transform.position.y < 10 && pickObjects[i].GetComponent<MeshRenderer>().bounds.size.y > maxHeight){
+                objind = i;
+                maxHeight = pickObjects[i].GetComponent<MeshRenderer>().bounds.size.y;
+            }
+        }
+        //Vector3 scaleWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size);
+        Vector3 size = pickObjects[objind].GetComponent<MeshRenderer>().bounds.size; 
+        Debug.Log("Sizes:");
         Debug.Log(size*100);
         Debug.Log(targetScaleY*100);
         
         request.scaleY = size.y;
-
-        Debug.Log(pickObjects[ind].transform.position);
+        
+        Debug.Log("Positions:");
+        Debug.Log(pickObjects[objind].transform.position);
         Debug.Log(targetPos);
 
 
@@ -318,7 +422,7 @@ public class TrajectoryPlanner : MonoBehaviour
         // Place Pose
         request.place_pose = new PoseMsg
         {
-            position = (placeObjects[ind].transform.position + m_PlaceOffset).To<FLU>(),
+            position = (placeObjects[label-1].transform.position + m_PlaceOffset).To<FLU>(),
             orientation = m_PickOrientation.To<FLU>()
         };
 
@@ -337,6 +441,10 @@ public class TrajectoryPlanner : MonoBehaviour
             Debug.LogError("No trajectory returned from MoverService.");
             RandomizeButton.interactable = true;
             PublishButton.interactable = true;
+            InitializeButton.interactable = true;
+            RandomizeButton2.interactable = true;
+            PublishButton2.interactable = true;
+            InitializeButton2.interactable = true;
         }
     }
 
@@ -392,6 +500,10 @@ public class TrajectoryPlanner : MonoBehaviour
 
             PublishButton.interactable = true;
             RandomizeButton.interactable = true;
+            InitializeButton.interactable = true;
+            PublishButton2.interactable = true;
+            RandomizeButton2.interactable = true;
+            InitializeButton2.interactable = true;
 
             // All trajectories have been executed, open the gripper to place the target cube
             //OpenGripper();
@@ -418,8 +530,8 @@ public class TrajectoryPlanner : MonoBehaviour
             m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<ArticulationBody>();
         }
 
-        pickObjects = new GameObject[] {m_RedCube, m_GreenCube, m_BlueCube};
-        placeObjects = new GameObject[]  {m_RedCan, m_GreenCan, m_BlueCan};
+        pickObjects = new GameObject[] {m_GreenCube1, m_GreenCube2,  m_BlueCube1, m_BlueCube2, m_YellowCube1, m_YellowCube2};
+        placeObjects = new GameObject[]  { m_GreenCan, m_BlueCan, m_YellowCan };
 
         // Find left and right fingers
         var rightGripper = linkName + "/tool_link/gripper_base/servo_head/control_rod_right/right_gripper";
@@ -428,8 +540,12 @@ public class TrajectoryPlanner : MonoBehaviour
         m_RightGripper = m_NiryoOne.transform.Find(rightGripper).GetComponent<ArticulationBody>();
         m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
 
-        RandomizeButton = GameObject.Find("Canvas/RandomizeButton").GetComponent<Button>();
-        PublishButton = GameObject.Find("Canvas/PublishButton").GetComponent<Button>();
+        RandomizeButton = GameObject.Find("Display1Buttons/RandomizeButton").GetComponent<Button>();
+        InitializeButton = GameObject.Find("Display1Buttons/InitializeButton").GetComponent<Button>();
+        PublishButton = GameObject.Find("Display1Buttons/PublishButton").GetComponent<Button>();
+        RandomizeButton2 = GameObject.Find("Display2Buttons/RandomizeButton").GetComponent<Button>();
+        PublishButton2 = GameObject.Find("Display2Buttons/PublishButton").GetComponent<Button>();
+        InitializeButton2 = GameObject.Find("Display2Buttons/InitializeButton").GetComponent<Button>();
 
         // Render texture 
         renderTexture = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 24, UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_SRGB);

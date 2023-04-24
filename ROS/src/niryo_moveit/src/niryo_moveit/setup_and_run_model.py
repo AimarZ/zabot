@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+import torch
+import torch.nn as nn
+import torchvision
 
 import numpy as np
-import torch 
-import torchvision
 
 from PIL import Image
 
@@ -32,44 +31,101 @@ class PoseEstimationNetwork(torch.nn.Module):
         torch.autograd.set_detect_anomaly(True)
         super(PoseEstimationNetwork, self).__init__()
         self.is_symetric = is_symetric
-        self.model_backbone = torchvision.models.vgg16(pretrained=True) # uses cache
+        self.model_backboneRGB = torchvision.models.vgg16(pretrained=True) # uses cache
+        self.model_backboneDepth = torchvision.models.vgg16(pretrained=True) # uses cache
         # remove the original classifier
-        self.model_backbone.classifier = torch.nn.Identity()
-        self.num_cubes = 3
-
+        self.model_backboneRGB.classifier = torch.nn.Identity()
+        self.model_backboneDepth.classifier = torch.nn.Identity()
+        self.num_cubes = 1
+        self.num_classes = 4
+        
+        self.depth_preprocess = torch.nn.Conv2d(1, 3, kernel_size=5, stride=1, padding=2)
+        
         self.translation_block = torch.nn.Sequential(
-            torch.nn.Linear(25088, 256),
+            torch.nn.Dropout(0.5),
+            torch.nn.Linear(25088*2, 256*2),
+            torch.nn.BatchNorm1d(256*2),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(256, 64),
+            torch.nn.Dropout(0.5),
+            torch.nn.Linear(256*2, 64),
+            torch.nn.BatchNorm1d(64),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(64, 3*self.num_cubes),
+            torch.nn.Linear(64, 3*self.num_cubes+self.num_cubes),
         )
+
+        self.class_block = torch.nn.Sequential(
+            torch.nn.Dropout(0.5),
+            torch.nn.Linear(25088*2, 256),
+            torch.nn.BatchNorm1d(256),
+            torch.nn.ReLU(inplace=True),
+            torch.nn.Dropout(0.5),
+            torch.nn.Linear(256, 64),
+            torch.nn.BatchNorm1d(64),
+            torch.nn.ReLU(inplace=True),
+            torch.nn.Linear(64, self.num_classes),
+        )
+
         self.orientation_block = torch.nn.Sequential(
-            torch.nn.Linear(25088, 256),
+            torch.nn.Linear(25088*2, 256),
+            torch.nn.BatchNorm1d(256),
             torch.nn.ReLU(inplace=True),
             torch.nn.Linear(256, 64),
+            torch.nn.BatchNorm1d(64),
             torch.nn.ReLU(inplace=True),
             torch.nn.Linear(64, 4*self.num_cubes),
             LinearNormalized(self.num_cubes),
         )
-        self.scaleY_block = torch.nn.Sequential(
-            torch.nn.Linear(25088, 256),
+        '''self.scaleY_block = torch.nn.Sequential(
+            torch.nn.Dropout(0.8),
+            torch.nn.Linear(25088, 128),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(256, 64),
+            torch.nn.Dropout(0.8),
+            torch.nn.Linear(128, 32),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(64, self.num_cubes)
-        )
+            torch.nn.Linear(32, self.num_cubes),
+        )'''
 
-    def forward(self, x):
-        x = self.model_backbone(x)
-        output_translation = self.translation_block(x)
-        output_scaleY = self.scaleY_block(x)
+        self.depth_preprocess.weight = torch.nn.Parameter(torch.FloatTensor([[[
+              [1, 4, 7,  4, 1],
+              [4, 16, 26, 16, 4],
+              [7, 26, 41, 26, 4],
+              [4, 16, 26, 16, 4],
+              [1, 4, 7,  4, 1]]],
+
+
+            [[[0, 0, 0, 0, 0],
+              [0, 16, 26, 16, 0],
+              [0, 26, 41, 26, 0],
+              [0, 16, 26, 16, 0],
+              [0, 0, 0, 0, 0]]],
+
+
+            [[[0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0],
+              [0, 0, 1, 0, 0],
+              [0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0]]]]))
+        self.depth_preprocess.weight.requires_grad = False
+
+    def forward(self, x_rgb, x_depth):
+        #channel1 = normalize(Depth_image) == /255 or whatever
+        #channel2 = 
+        x_rgb = self.model_backboneRGB(x_rgb)
+        x_depth = self.depth_preprocess(x_depth)
+        x_depth = self.model_backboneDepth(x_depth)
+        x = torch.cat((x_rgb, x_depth), dim=1)
+        
+        output_translation_scale = self.translation_block(x)
+        output_class = self.class_block(x)
+        #output_scaleY = self.scaleY_block(x_depth)
+        output_translation = output_translation_scale[:,:-self.num_cubes]
+        output_scaleY = output_translation_scale[:,-self.num_cubes:]
 
         if self.is_symetric == False:
             output_orientation = self.orientation_block(x)
-            return output_translation, output_orientation, output_scaleY
+            return output_translation, output_orientation, output_scaleY, output_class
 
-        return output_translation, output_scaleY
+        return output_translation, output_scaleY, output_class
 
 
 class LinearNormalized(torch.nn.Module):
@@ -113,12 +169,20 @@ class LinearNormalized(torch.nn.Module):
         return x
 
 
+
+
 def pre_process_image(path_image, device):
-    image_origin = Image.open(path_image).convert("RGB")
+    
+    image_RGB = Image.open(path_image).convert("RGB")
     transform = get_transform()
-    image = [transform(image_origin).unsqueeze(0)]
-    image = list(img.to(device) for img in image)
-    return image
+    imageRGB = [transform(image_RGB).unsqueeze(0)]
+    imageRGB = list(img.to(device) for img in imageRGB)
+    
+    imageDepth = Image.open(path_image).convert("RGBA").getchannel("A")
+    imageDepth = [transform(imageDepth).unsqueeze(0)]
+    imageDepth = list(img.to(device) for img in imageDepth)
+
+    return imageRGB, imageDepth
 
 def get_transform():
     """
@@ -153,7 +217,8 @@ def run_model_main(image_file_png, model_file_name):
         model.to(device)
         model.eval()
 
-    image = pre_process_image(image_file_png, device)
-    output_translation, output_orientation, output_scaleY = model(torch.stack(image).reshape(-1, 3, 224, 224).to(device))
-    output_translation, output_orientation, output_scaleY = output_translation.cpu().detach().numpy(), output_orientation.cpu().detach().numpy(), output_scaleY.cpu().detach().numpy()
-    return output_translation, output_orientation,  output_scaleY
+    imageRGB, imageDepth = pre_process_image(image_file_png, device)
+    output_translation, output_orientation, output_scaleY, output_class = model(torch.stack(imageRGB).reshape(-1, 3, 224, 224).to(device), torch.stack(imageDepth).reshape(-1, 1, 224, 224).to(device))
+    output_class = torch.argmax(torch.nn.functional.softmax(output_class, dim=1))
+    output_translation, output_orientation, output_scaleY, output_class = output_translation.cpu().detach().numpy(), output_orientation.cpu().detach().numpy(), output_scaleY.cpu().detach().numpy(), output_class.cpu().detach().numpy()
+    return output_translation, output_orientation,  output_scaleY, output_class

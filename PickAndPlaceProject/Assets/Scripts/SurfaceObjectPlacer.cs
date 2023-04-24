@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Perception.Randomization.Parameters;
+using UnityEngine.Perception.Randomization.Samplers;
 
 
 public class PlacementConstraint
@@ -85,6 +86,8 @@ public class SurfaceObjectPlacer
     private ReachabilityConstraint maxRobotReachability;
     private int maxPlacementTries = 100;
 
+    private FloatParameter fifty_fifty = new FloatParameter { value = new UniformSampler(0f, 1f)};
+
 
     private List<PlacementConstraint> collisionConstraints = new List<PlacementConstraint>();
 
@@ -119,13 +122,18 @@ public class SurfaceObjectPlacer
             float radius = objBounds.extents.magnitude;
             float heightAbovePlane = objBounds.extents.y;
 
+            
+
             List<PlacementConstraint> constraints = GetAllConstraints(respectMaxRobotReachability);
             Vector3? point = SampleValidGlobalPointOnPlane(radius, constraints, planeBounds, respectMaxRobotReachability);
 
             if (point.HasValue)
             {
+                bool place_outside = fifty_fifty.Sample()>0.5;
                 // place object
                 Vector3 foundPoint = point ?? Vector3.zero;
+                if(place_outside)
+                    foundPoint.z = 100;
                 obj.transform.position = new Vector3(foundPoint.x, foundPoint.y + heightAbovePlane, foundPoint.z);
 
                 // update constraints so subsequently placed object cannot collide with this one

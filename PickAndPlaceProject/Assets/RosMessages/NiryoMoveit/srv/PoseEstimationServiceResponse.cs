@@ -13,64 +13,46 @@ namespace RosMessageTypes.NiryoMoveit
         public const string k_RosMessageName = "niryo_moveit/PoseEstimationService";
         public override string RosMessageName => k_RosMessageName;
 
-        public Geometry.PoseMsg estimated_pose1;
-        public Geometry.PoseMsg estimated_pose2;
-        public Geometry.PoseMsg estimated_pose3;
-        public float estimated_scaleY1;
-        public float estimated_scaleY2;
-        public float estimated_scaleY3;
+        public Geometry.PoseMsg estimated_pose;
+        public float estimated_scaleY;
+        public int estimated_class;
 
         public PoseEstimationServiceResponse()
         {
-            this.estimated_pose1 = new Geometry.PoseMsg();
-            this.estimated_pose2 = new Geometry.PoseMsg();
-            this.estimated_pose3 = new Geometry.PoseMsg();
-            this.estimated_scaleY1 = 0.0f;
-            this.estimated_scaleY2 = 0.0f;
-            this.estimated_scaleY3 = 0.0f;
+            this.estimated_pose = new Geometry.PoseMsg();
+            this.estimated_scaleY = 0.0f;
+            this.estimated_class = 0;
         }
 
-        public PoseEstimationServiceResponse(Geometry.PoseMsg estimated_pose1, Geometry.PoseMsg estimated_pose2, Geometry.PoseMsg estimated_pose3, float estimated_scaleY1, float estimated_scaleY2, float estimated_scaleY3)
+        public PoseEstimationServiceResponse(Geometry.PoseMsg estimated_pose, float estimated_scaleY, int estimated_class)
         {
-            this.estimated_pose1 = estimated_pose1;
-            this.estimated_pose2 = estimated_pose2;
-            this.estimated_pose3 = estimated_pose3;
-            this.estimated_scaleY1 = estimated_scaleY1;
-            this.estimated_scaleY2 = estimated_scaleY2;
-            this.estimated_scaleY3 = estimated_scaleY3;
+            this.estimated_pose = estimated_pose;
+            this.estimated_scaleY = estimated_scaleY;
+            this.estimated_class = estimated_class;
         }
 
         public static PoseEstimationServiceResponse Deserialize(MessageDeserializer deserializer) => new PoseEstimationServiceResponse(deserializer);
 
         private PoseEstimationServiceResponse(MessageDeserializer deserializer)
         {
-            this.estimated_pose1 = Geometry.PoseMsg.Deserialize(deserializer);
-            this.estimated_pose2 = Geometry.PoseMsg.Deserialize(deserializer);
-            this.estimated_pose3 = Geometry.PoseMsg.Deserialize(deserializer);
-            deserializer.Read(out this.estimated_scaleY1);
-            deserializer.Read(out this.estimated_scaleY2);
-            deserializer.Read(out this.estimated_scaleY3);
+            this.estimated_pose = Geometry.PoseMsg.Deserialize(deserializer);
+            deserializer.Read(out this.estimated_scaleY);
+            deserializer.Read(out this.estimated_class);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
-            serializer.Write(this.estimated_pose1);
-            serializer.Write(this.estimated_pose2);
-            serializer.Write(this.estimated_pose3);
-            serializer.Write(this.estimated_scaleY1);
-            serializer.Write(this.estimated_scaleY2);
-            serializer.Write(this.estimated_scaleY3);
+            serializer.Write(this.estimated_pose);
+            serializer.Write(this.estimated_scaleY);
+            serializer.Write(this.estimated_class);
         }
 
         public override string ToString()
         {
             return "PoseEstimationServiceResponse: " +
-            "\nestimated_pose1: " + estimated_pose1.ToString() +
-            "\nestimated_pose2: " + estimated_pose2.ToString() +
-            "\nestimated_pose3: " + estimated_pose3.ToString() +
-            "\nestimated_scaleY1: " + estimated_scaleY1.ToString() +
-            "\nestimated_scaleY2: " + estimated_scaleY2.ToString() +
-            "\nestimated_scaleY3: " + estimated_scaleY3.ToString();
+            "\nestimated_pose: " + estimated_pose.ToString() +
+            "\nestimated_scaleY: " + estimated_scaleY.ToString() +
+            "\nestimated_class: " + estimated_class.ToString();
         }
 
 #if UNITY_EDITOR
