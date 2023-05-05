@@ -38,6 +38,7 @@ catkin_install_python(PROGRAMS
   scripts/mover.py
   scripts/trajectory_subscriber.py
   scripts/sim_real_pnp.py
+  scripts/pose_estimation_script.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

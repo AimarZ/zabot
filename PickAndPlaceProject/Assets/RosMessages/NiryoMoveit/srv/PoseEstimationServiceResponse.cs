@@ -13,20 +13,20 @@ namespace RosMessageTypes.NiryoMoveit
         public const string k_RosMessageName = "niryo_moveit/PoseEstimationService";
         public override string RosMessageName => k_RosMessageName;
 
-        public Geometry.PoseMsg estimated_pose;
+        public Geometry.PointMsg estimated_position;
         public float estimated_scaleY;
         public int estimated_class;
 
         public PoseEstimationServiceResponse()
         {
-            this.estimated_pose = new Geometry.PoseMsg();
+            this.estimated_position = new Geometry.PointMsg();
             this.estimated_scaleY = 0.0f;
             this.estimated_class = 0;
         }
 
-        public PoseEstimationServiceResponse(Geometry.PoseMsg estimated_pose, float estimated_scaleY, int estimated_class)
+        public PoseEstimationServiceResponse(Geometry.PointMsg estimated_position, float estimated_scaleY, int estimated_class)
         {
-            this.estimated_pose = estimated_pose;
+            this.estimated_position = estimated_position;
             this.estimated_scaleY = estimated_scaleY;
             this.estimated_class = estimated_class;
         }
@@ -35,14 +35,14 @@ namespace RosMessageTypes.NiryoMoveit
 
         private PoseEstimationServiceResponse(MessageDeserializer deserializer)
         {
-            this.estimated_pose = Geometry.PoseMsg.Deserialize(deserializer);
+            this.estimated_position = Geometry.PointMsg.Deserialize(deserializer);
             deserializer.Read(out this.estimated_scaleY);
             deserializer.Read(out this.estimated_class);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
-            serializer.Write(this.estimated_pose);
+            serializer.Write(this.estimated_position);
             serializer.Write(this.estimated_scaleY);
             serializer.Write(this.estimated_class);
         }
@@ -50,7 +50,7 @@ namespace RosMessageTypes.NiryoMoveit
         public override string ToString()
         {
             return "PoseEstimationServiceResponse: " +
-            "\nestimated_pose: " + estimated_pose.ToString() +
+            "\nestimated_position: " + estimated_position.ToString() +
             "\nestimated_scaleY: " + estimated_scaleY.ToString() +
             "\nestimated_class: " + estimated_class.ToString();
         }

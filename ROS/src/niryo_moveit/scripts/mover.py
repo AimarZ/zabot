@@ -101,7 +101,8 @@ def plan_pick_and_place(req):
 
     # Grasp - lower gripper so that fingers are on either side of object
     pick_pose = copy.deepcopy(req.pick_pose)
-    pick_pose.position.z -= scaleY  # Static value coming from Unity, TODO: pass along with request
+    #pick_pose.position.z -= scaleY  # Static value coming from Unity, TODO: pass along with request
+    pick_pose.position.z -= 0.10
     grasp_pose = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
     
     if not grasp_pose.joint_trajectory.points:
@@ -110,7 +111,8 @@ def plan_pick_and_place(req):
     previous_ending_joint_angles = grasp_pose.joint_trajectory.points[-1].positions
 
     # Pick Up - raise gripper back to the pre grasp position in 2 steps
-    pick_pose.position.z += scaleY
+    #pick_pose.position.z += scaleY
+    pick_pose.position.z += 0.1
     pick_pose.position.z += 0.05
     pick_up_pose = plan_trajectory(move_group, pick_pose, previous_ending_joint_angles)
     

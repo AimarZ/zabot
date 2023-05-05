@@ -18,7 +18,7 @@ def main():
     tcp_server.start({
         #'UR3Trajectory': RosSubscriber('UR3Trajectory', UR3Trajectory, tcp_server),
         #'niryo_moveit': RosService('niryo_moveit', MoverService),
-        'pose_estimation_srv': RosService('pose_estimation_srv', PoseEstimationService)
+        'pose_estimation_srv': RosService('pose_estimation_srv', PoseEstimationService),
     })
 
     rospy.spin()

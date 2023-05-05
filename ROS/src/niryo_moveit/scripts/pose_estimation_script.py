@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from niryo_moveit.setup_and_run_model import *
+from niryo_moveit.setup_and_run_model_class import run_model_main_class
 
 import rospy
 import io
@@ -14,7 +15,8 @@ from scipy.spatial.transform import Rotation as R
 
 NODE_NAME = "PoseEstimationNode"
 PACKAGE_LOCATION = os.path.dirname(os.path.realpath(__file__))[:-(len("/scripts"))] # remove "/scripts"
-MODEL_PATH = PACKAGE_LOCATION + "/models/Niryo_1by1_model_mix_ep12-24.tar"
+MODEL_PATH = PACKAGE_LOCATION + "/models/Niryo_1by1_model_translation_ep52.tar"
+MODEL_CLASS_PATH = PACKAGE_LOCATION + "/models/Niryo_1by1_model_class_ep64.tar"
 
 count = 0
 
@@ -52,13 +54,14 @@ def _run_model(image_path):
     """
     output = run_model_main(image_path, MODEL_PATH)
     positionV = output[0].flatten()
-    quaternionV = output[1].flatten()
-    scaleYV = output[2].flatten()
-    classV = output[3].flatten()
-    return positionV, quaternionV, scaleYV, classV
+    scaleYV = output[1].flatten()
+    output = run_model_main_class(image_path, MODEL_CLASS_PATH)
+    label = output.flatten()
+
+    return positionV, scaleYV, label
 
 
-def _format_response(est_position, est_rotation, est_scaleY, est_class):
+def _format_response(est_position, est_scaleY, est_class):
     """ format the computed estimated position/rotation as a service response
        Args:
            est_position (float[]): object estimated x,y,z
@@ -68,28 +71,19 @@ def _format_response(est_position, est_rotation, est_scaleY, est_class):
        """
 
     position = Point()
-    position.x = est_position[0]
-    position.y = est_position[1]
-    position.z = est_position[2]
-
-    rotation = Quaternion()
-    rotation.x = est_rotation[0]
-    rotation.y = est_rotation[1]
-    rotation.z = est_rotation[2]
-    rotation.w = est_rotation[3]
+    position.x = est_position[0]/100
+    position.y = est_position[1]/100
+    position.z = est_position[2]/100
     
-    scaleY = est_scaleY[0]
+    scaleY = est_scaleY[0]/100
 
     label = est_class[0]
     
-    pose = Pose()
-    pose.position = position
-    pose.orientation = rotation
-
     response = PoseEstimationServiceResponse()
-    response.estimated_pose = pose
+    response.estimated_position = position
     response.estimated_scaleY = scaleY
     response.estimated_class = label
+
     return response
 
 
@@ -103,8 +97,8 @@ def pose_estimation_main(req):
     print("Started estimation pipeline")
     image_path = _save_image(req)
     print("Predicting from screenshot " + image_path)
-    est_position, est_rotation, est_scaleY, est_class = _run_model(image_path)
-    response = _format_response(est_position, est_rotation, est_scaleY, est_class)
+    est_position, est_scaleY, est_class = _run_model(image_path)
+    response = _format_response(est_position, est_scaleY, est_class)
     print("Finished estimation pipeline\n")
     return response
 

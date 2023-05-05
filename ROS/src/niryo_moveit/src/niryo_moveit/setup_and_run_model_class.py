@@ -7,6 +7,7 @@ import numpy as np
 from PIL import Image
 
 
+
 def preload():
     '''pre-load VGG model weights, for transfer learning. Automatically cached for later use.'''
     torchvision.models.vgg16(pretrained=True)
@@ -40,30 +41,17 @@ class PoseEstimationNetwork(torch.nn.Module):
         self.num_classes = 4
         
         self.depth_preprocess = torch.nn.Conv2d(1, 3, kernel_size=5, stride=1, padding=2)
-        
-        self.translation_block = torch.nn.Sequential(
-            #torch.nn.Dropout(0.5),
+
+        self.class_block = torch.nn.Sequential(
             torch.nn.Linear(25088*2, 256*2),
             torch.nn.BatchNorm1d(256*2),
             torch.nn.ReLU(inplace=True),
-            #torch.nn.Dropout(0.5),
             torch.nn.Linear(256*2, 64*2),
             torch.nn.BatchNorm1d(64*2),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(64*2, 3*self.num_cubes),
+            torch.nn.Linear(64*2, self.num_classes),
         )
 
-        self.scaleY_block = torch.nn.Sequential(
-            #torch.nn.Dropout(0.8),
-            torch.nn.Linear(25088, 128),
-            torch.nn.BatchNorm1d(128),
-            torch.nn.ReLU(inplace=True),
-            #torch.nn.Dropout(0.8),
-            torch.nn.Linear(128, 32),
-            torch.nn.BatchNorm1d(32),
-            torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(32, self.num_cubes),
-        )
 
         self.depth_preprocess.weight = torch.nn.Parameter(torch.FloatTensor([[[
               [1, 4, 7,  4, 1],
@@ -94,15 +82,10 @@ class PoseEstimationNetwork(torch.nn.Module):
         x_depth = self.depth_preprocess(x_depth)
         x_depth = self.model_backboneDepth(x_depth)
         x = torch.cat((x_rgb, x_depth), dim=1)
-        
-        output_translation = self.translation_block(x)
-        output_scaleY = self.scaleY_block(x_depth)
 
-        '''if self.is_symetric == False:
-            output_orientation = self.orientation_block(x)
-            return output_translation, output_orientation, output_scaleY, output_class'''
+        output_class = self.class_block(x)
 
-        return output_translation, output_scaleY
+        return output_class
 
 
 class LinearNormalized(torch.nn.Module):
@@ -149,6 +132,7 @@ class LinearNormalized(torch.nn.Module):
 
 
 
+
 def pre_process_image(path_image, device):
     
     image_RGB = Image.open(path_image).convert("RGB")
@@ -184,7 +168,7 @@ def get_transform():
 global model
 model = None
 
-def run_model_main(image_file_png, model_file_name):
+def run_model_main_class(image_file_png, model_file_name):
     global model
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -196,7 +180,6 @@ def run_model_main(image_file_png, model_file_name):
         model.eval()
 
     imageRGB, imageDepth = pre_process_image(image_file_png, device)
-    output_translation, output_scaleY = model(torch.stack(imageRGB).reshape(-1, 3, 224, 224).to(device), torch.stack(imageDepth).reshape(-1, 1, 224, 224).to(device))
-    #output_class = torch.argmax(torch.nn.functional.softmax(output_class, dim=1))
-    output_translation, output_scaleY = output_translation.cpu().detach().numpy(), output_scaleY.cpu().detach().numpy()
-    return output_translation, output_scaleY
+    output_class = model(torch.stack(imageRGB).reshape(-1, 3, 224, 224).to(device), torch.stack(imageDepth).reshape(-1, 1, 224, 224).to(device))
+    output_class = torch.argmax(torch.nn.functional.softmax(output_class, dim=1))
+    return output_class

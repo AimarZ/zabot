@@ -81,15 +81,10 @@ public class TrajectoryPlanner : MonoBehaviour
 
     public PoseEstimationScenario scenario;
 
-    // [SerializeField]
-    // PoseEstimationScenario m_scenario;
-    // public PoseEstimationScenario scenario { get => m_scenario; set => m_scenario = value; }
-
-
     // Assures that the gripper is always positioned above the m_Target cube before grasping.
     readonly Quaternion m_PickOrientation = Quaternion.Euler(90, 90, 0);
     //readonly Vector3 m_PickOffset = Vector3.up * 0.075f;
-    readonly Vector3 m_PickOffset = Vector3.up * 0;
+    readonly Vector3 m_PickOffset = Vector3.up * 0.17f;
     readonly Vector3 m_PlaceOffset = Vector3.up * 0.3f;
 
     // Articulation Bodies
@@ -172,8 +167,10 @@ public class TrajectoryPlanner : MonoBehaviour
             float currentRotation = tempXDrive.target;
             float rotationChange = rotationSpeed * Time.fixedDeltaTime;
             float targetRotation = 0f;
+            
             if (i==0)
                 targetRotation = 130f;
+
             if (currentRotation > targetRotation) rotationChange *= -1;
             
             if (Mathf.Abs(currentRotation-targetRotation) < rotationChange)
@@ -259,13 +256,11 @@ public class TrajectoryPlanner : MonoBehaviour
         {
             
             // The position output by the model is the position of the cube relative to the camera so we need to extract its global position 
-            var estimatedPosition = Camera.main.transform.TransformPoint(response.estimated_pose.position.From<RUF>());
-            var estimatedRotation = Camera.main.transform.rotation * response.estimated_pose.orientation.From<RUF>();
-            var estimatedScaleY = response.estimated_scaleY;
-            var estimatedClass = response.estimated_class;
+            var estimated_position = Camera.main.transform.TransformPoint(response.estimated_position.From<RUF>());
+            var estimated_scaleY = response.estimated_scaleY;
+            var estimated_class = response.estimated_class; 
 
-
-            PublishJoints(estimatedPosition, estimatedRotation, estimatedScaleY, estimatedClass);
+            PublishJoints(estimated_position, estimated_scaleY,estimated_class);
 
         }
         else {         
@@ -277,6 +272,7 @@ public class TrajectoryPlanner : MonoBehaviour
             InitializeButton2.interactable = true;
         }
     }
+
 
 
     /// <summary>
@@ -371,23 +367,16 @@ public class TrajectoryPlanner : MonoBehaviour
     ///     Call the MoverService using the ROSConnection and if a trajectory is successfully planned,
     ///     execute the trajectories in a coroutine.
     /// </summary>
-    public void PublishJoints(Vector3 targetPos, Quaternion targetRot, float targetScaleY, int label)
+    public void PublishJoints(Vector3 targetPos, float targetScaleY, int label)
     {   
         if (label == 0){
             Debug.Log("There is no object");
             return;
         }
 
-        
-        print(pickObjects[0].transform.position);
-        //print(Quaternion.Euler(90, pickObjects[0].eulerAngles.y, 0));
-        print(pickObjects[0].transform.rotation);
         var request = new MoverServiceRequest();
         request.joints_input = CurrentJointConfig();;
 
-        //lines = File.ReadAllLines(dir+textFile);
-        //ind = Int32.Parse(lines[0]);
-        //File.WriteAllLines(dir+textFile, lines.Skip(1).ToArray());
         int objind = 0;
         float maxHeight = 0;
         for(int i=0;i<=5;i++){
@@ -401,22 +390,24 @@ public class TrajectoryPlanner : MonoBehaviour
         Debug.Log("Sizes:");
         Debug.Log(size*100);
         Debug.Log(targetScaleY*100);
+        //targetPos = targetPos/100;
         
         request.scaleY = size.y;
         
         Debug.Log("Positions:");
-        Debug.Log(pickObjects[objind].transform.position);
-        Debug.Log(targetPos);
+        Debug.Log(pickObjects[objind].transform.position*100);
+        Debug.Log(targetPos*100);
 
 
         // Pick Pose
         request.pick_pose = new PoseMsg
         {
-            position = (targetPos + m_PickOffset+ Vector3.up*size.y).To<FLU>(),
+            //position = (targetPos + m_PickOffset+ Vector3.up*targetScaleY).To<FLU>(),
+            position = (targetPos + m_PickOffset).To<FLU>(),
             
 
             // The hardcoded x/z angles assure that the gripper is always positioned above the target cube before grasping.
-            orientation = Quaternion.Euler(90, targetRot.eulerAngles.y, 0).To<FLU>()
+            orientation = Quaternion.Euler(90, pickObjects[objind].transform.eulerAngles.y, 0).To<FLU>()
         };
 
         // Place Pose
