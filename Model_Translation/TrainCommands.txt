@@ -1,0 +1,17 @@
+FOREGROUND-EN ENTRENATZEN HASTEKO, config.yaml KOKATZEN DEN TOKIAN:
+    conda activate pose-estimation
+    python -m pose_estimation.cli train
+
+BACKGROUND-EN ENTRENATU, NAHIZ ETA "CERRAR SESIÓN" EGIN MARTXAN JARRAITZEN DU (output-a nohup.txt fitxategian):
+    conda activate pose-estimation
+    nohup python -m pose_estimation.cli train &
+
+
+GRAFIKOAK IKUSTEKO, V7_OUTPUT KARPETAN: 
+    tensorboard --logdir=./
+
+BACKGROUND PROZESUA HILTZEKO:
+    PID BILATU: 
+        ps -ef | grep pose_estimation.cli
+    HIL: 
+        kill *PID*
