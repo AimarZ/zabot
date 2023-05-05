@@ -387,17 +387,14 @@ public class TrajectoryPlanner : MonoBehaviour
         }
         //Vector3 scaleWorld = transform.localToWorldMatrix.MultiplyVector(pickObjects[ind].GetComponent<BoxCollider>().size);
         Vector3 size = pickObjects[objind].GetComponent<MeshRenderer>().bounds.size; 
-        Debug.Log("Sizes:");
-        Debug.Log(size*100);
-        Debug.Log(targetScaleY*100);
-        //targetPos = targetPos/100;
+        Debug.Log("Actual size: " + (size*100).ToString());
+        Debug.Log("Predicted size: " + (targetScaleY*100).ToString());
         
-        request.scaleY = size.y;
-        
-        Debug.Log("Positions:");
-        Debug.Log(pickObjects[objind].transform.position*100);
-        Debug.Log(targetPos*100);
+        Debug.Log("Actual position: " + (pickObjects[objind].transform.position*100).ToString());
+        Debug.Log("Predicted position: " + (targetPos*100).ToString());
 
+
+        request.scaleY = targetScaleY;
 
         // Pick Pose
         request.pick_pose = new PoseMsg

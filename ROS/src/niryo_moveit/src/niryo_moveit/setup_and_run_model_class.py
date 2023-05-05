@@ -46,10 +46,10 @@ class PoseEstimationNetwork(torch.nn.Module):
             torch.nn.Linear(25088*2, 256*2),
             torch.nn.BatchNorm1d(256*2),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(256*2, 64*2),
-            torch.nn.BatchNorm1d(64*2),
+            torch.nn.Linear(256*2, 64),
+            torch.nn.BatchNorm1d(64),
             torch.nn.ReLU(inplace=True),
-            torch.nn.Linear(64*2, self.num_classes),
+            torch.nn.Linear(64, self.num_classes),
         )
 
 
