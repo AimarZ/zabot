@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Cans_Cans_AlbedoTransparency
-    second: {fileID: 2800000, guid: 8c593f18ab3d50f55a346da137fb4e15, type: 3}
+    second: {fileID: 2800000, guid: 46241389619bd8694937d39429c9c78e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Cans_Cans_MetallicSmoothness
-    second: {fileID: 2800000, guid: 25d34ac4f7fad4d38980e2599e22541e, type: 3}
+    second: {fileID: 2800000, guid: b91cc4afdc292f104b0e1f3a450656fa, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Cans_Cans_Normal
-    second: {fileID: 2800000, guid: e3dd66c8a9da00cda801b89387f2111f, type: 3}
+    second: {fileID: 2800000, guid: a3c29b33a74b846a784109a8182a37e0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Cans_Roughness
-    second: {fileID: 2800000, guid: 943942b4acb81929294ddf3faff4feb8, type: 3}
+    second: {fileID: 2800000, guid: 9878154fd1619571d9a016d1a14c59e8, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

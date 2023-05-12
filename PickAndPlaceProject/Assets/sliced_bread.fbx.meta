@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bread_low_bread_BaseColor
-    second: {fileID: 2800000, guid: e31f724ce62720571a0120e394cc1330, type: 3}
+    second: {fileID: 2800000, guid: 2589cbbf5e493d9eab416c292c729ace, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bread_low_bread_Metallic
-    second: {fileID: 2800000, guid: 0136468f07fe39e9b976e30b156a0ed3, type: 3}
+    second: {fileID: 2800000, guid: d0c48c3fd2a99c68a8b2e042e3f8c318, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bread_low_bread_Normal
-    second: {fileID: 2800000, guid: e1e3746e9c5aea7e8940fe4aafce50c9, type: 3}
+    second: {fileID: 2800000, guid: 03315203beff7faf48fc6ffab30e6dac, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: bread_low_bread_Roughness
-    second: {fileID: 2800000, guid: aa68d6343e3ef71d092fc6d0b7dadbeb, type: 3}
+    second: {fileID: 2800000, guid: 2c6d272d0c36f379c841cae8a9ae603f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: orange-juice
-    second: {fileID: 2800000, guid: cadcf4d2c48f9188a8faa2a209650388, type: 3}
+    second: {fileID: 2800000, guid: d35e0b6a5c02b101a84764af935e42f1, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: orange-juice1
-    second: {fileID: 2800000, guid: 798c14bdb209ddc958e20f3ed706e79e, type: 3}
+    second: {fileID: 2800000, guid: de27c9e33f06847f4b8b36e3c6f96560, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

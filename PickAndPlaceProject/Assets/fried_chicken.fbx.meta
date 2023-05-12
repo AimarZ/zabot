@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Chickentex_col
-    second: {fileID: 2800000, guid: 7baf433a5809594c08aea8f55f17aab6, type: 3}
+    second: {fileID: 2800000, guid: b709e5e210fa968b8b1897ab1c12cf23, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Chickentex_norm
-    second: {fileID: 2800000, guid: 57fdf4f61ab76370dab44ef0d76b9f73, type: 3}
+    second: {fileID: 2800000, guid: da2bbf8e4191f1d1e892b1b650ffa38b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
