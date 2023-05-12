@@ -71,11 +71,9 @@ public class TrajectoryPlanner : MonoBehaviour
     private const int step = 4;
 
     private Button RandomizeButton;
-    private Button InitializeButton;
     private Button PublishButton;
     private Button RandomizeButton2;
     private Button PublishButton2;
-    private Button InitializeButton2;
 
     private GameObject niryo_shoulder_link;
 
@@ -110,8 +108,6 @@ public class TrajectoryPlanner : MonoBehaviour
     public void Initialize(){
         PublishButton.interactable = false;
         PublishButton2.interactable = false;
-        InitializeButton.interactable = false;
-        InitializeButton2.interactable = false;
         StartCoroutine(MoveToInitialPosition());
     }
 
@@ -123,8 +119,6 @@ public class TrajectoryPlanner : MonoBehaviour
             isRotationFinished = ResetRobotToDefaultPosition2();
             yield return new WaitForSeconds(k_JointAssignmentWait);
         }
-        InitializeButton.interactable = true;
-        InitializeButton2.interactable = true;
         PublishButton.interactable = true;
         PublishButton2.interactable = true;
     }
@@ -265,11 +259,9 @@ public class TrajectoryPlanner : MonoBehaviour
         }
         else {         
             RandomizeButton.interactable = true;
-            InitializeButton.interactable = true;
             PublishButton.interactable = true;
             RandomizeButton2.interactable = true;
             PublishButton2.interactable = true;
-            InitializeButton2.interactable = true;
         }
     }
 
@@ -282,11 +274,9 @@ public class TrajectoryPlanner : MonoBehaviour
         Debug.Log("Capturing screenshot...");
 
         RandomizeButton.interactable = false;
-        InitializeButton.interactable = false;
         PublishButton.interactable = false;
         RandomizeButton2.interactable = false;
-        PublishButton2.interactable = false;
-        InitializeButton2.interactable = false;
+        PublishButton2.interactable = false;;
         // ServiceButton.interactable = false;
         // ActualPos.text = target.transform.position.ToString();
         // ActualRot.text = target.transform.eulerAngles.ToString();
@@ -429,10 +419,8 @@ public class TrajectoryPlanner : MonoBehaviour
             Debug.LogError("No trajectory returned from MoverService.");
             RandomizeButton.interactable = true;
             PublishButton.interactable = true;
-            InitializeButton.interactable = true;
             RandomizeButton2.interactable = true;
             PublishButton2.interactable = true;
-            InitializeButton2.interactable = true;
         }
     }
 
@@ -486,12 +474,12 @@ public class TrajectoryPlanner : MonoBehaviour
                 yield return new WaitForSeconds(k_PoseAssignmentWait);
             }
 
-            PublishButton.interactable = true;
+            Initialize();
+
+            //PublishButton.interactable = true;
             RandomizeButton.interactable = true;
-            InitializeButton.interactable = true;
-            PublishButton2.interactable = true;
+            //PublishButton2.interactable = true;
             RandomizeButton2.interactable = true;
-            InitializeButton2.interactable = true;
 
             // All trajectories have been executed, open the gripper to place the target cube
             //OpenGripper();
@@ -529,15 +517,15 @@ public class TrajectoryPlanner : MonoBehaviour
         m_LeftGripper = m_NiryoOne.transform.Find(leftGripper).GetComponent<ArticulationBody>();
 
         RandomizeButton = GameObject.Find("Display1Buttons/RandomizeButton").GetComponent<Button>();
-        InitializeButton = GameObject.Find("Display1Buttons/InitializeButton").GetComponent<Button>();
         PublishButton = GameObject.Find("Display1Buttons/PublishButton").GetComponent<Button>();
         RandomizeButton2 = GameObject.Find("Display2Buttons/RandomizeButton").GetComponent<Button>();
-        PublishButton2 = GameObject.Find("Display2Buttons/PublishButton").GetComponent<Button>();
-        InitializeButton2 = GameObject.Find("Display2Buttons/InitializeButton").GetComponent<Button>();
+        PublishButton2 = GameObject.Find("Display2Buttons/PublishButton").GetComponent<Button>();;
 
         // Render texture 
         renderTexture = new RenderTexture(Camera.main.pixelWidth, Camera.main.pixelHeight, 24, UnityEngine.Experimental.Rendering.GraphicsFormat.R8G8B8A8_SRGB);
         renderTexture.Create();
+
+        Initialize();
     }
 
     enum Poses
