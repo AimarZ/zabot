@@ -86,7 +86,7 @@ public class SurfaceObjectPlacer
     private ReachabilityConstraint maxRobotReachability;
     private int maxPlacementTries = 100;
 
-    private FloatParameter fifty_fifty = new FloatParameter { value = new UniformSampler(0f, 1f)};
+    private FloatParameter probability = new FloatParameter { value = new UniformSampler(0f, 1f)};
 
 
     private List<PlacementConstraint> collisionConstraints = new List<PlacementConstraint>();
@@ -129,12 +129,15 @@ public class SurfaceObjectPlacer
 
             if (point.HasValue)
             {
-                bool place_outside = fifty_fifty.Sample()>0.5;
+                bool place_outside = probability.Sample()>0.1;
                 // place object
                 Vector3 foundPoint = point ?? Vector3.zero;
-                if(place_outside)
-                    foundPoint.z = 100;
-                obj.transform.position = new Vector3(foundPoint.x, foundPoint.y + heightAbovePlane, foundPoint.z);
+                if(place_outside){
+                    foundPoint.z = 100; 
+                    foundPoint.y = -100;
+                    foundPoint.x = 1000;
+                }
+                obj.transform.position = new Vector3(foundPoint.x, foundPoint.y, foundPoint.z);
 
                 // update constraints so subsequently placed object cannot collide with this one
                 CollisionConstraint newConstraint = new CollisionConstraint();

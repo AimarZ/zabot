@@ -13,17 +13,53 @@ MonoBehaviour:
   m_Name: IdLabelConfig
   m_EditorClassIdentifier: 
   m_LabelEntries:
-  - label: green_cube1
+  - label: sliced_bread
     id: 1
-  - label: green_cube2
+  - label: plastic_cup
     id: 2
-  - label: blue_cube1
+  - label: plastic_cup2
     id: 3
-  - label: blue_cube2
+  - label: plastic_bag
     id: 4
-  - label: yellow_cube1
+  - label: plastic_bottle
     id: 5
-  - label: yellow_cube2
+  - label: orange_juice
     id: 6
+  - label: milk_box
+    id: 7
+  - label: fried_chicken
+    id: 8
+  - label: paper_ball1
+    id: 9
+  - label: paper_ball2
+    id: 10
+  - label: paper_ball3
+    id: 11
+  - label: paper_ball4
+    id: 12
+  - label: paper_ball5
+    id: 13
+  - label: paper_ball6
+    id: 14
+  - label: paper_ball7
+    id: 15
+  - label: can1
+    id: 16
+  - label: can2
+    id: 17
+  - label: can3
+    id: 18
+  - label: carton_box
+    id: 19
+  - label: pie1
+    id: 20
+  - label: pie2
+    id: 21
+  - label: brocolli
+    id: 22
+  - label: apple_core
+    id: 23
+  - label: egg_box
+    id: 24
   autoAssignIds: 1
   startingLabelId: 1

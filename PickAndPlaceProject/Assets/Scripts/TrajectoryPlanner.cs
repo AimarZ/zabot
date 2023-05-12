@@ -34,29 +34,83 @@ public class TrajectoryPlanner : MonoBehaviour
     public GameObject GreenCan { get => m_GreenCan; set => m_GreenCan = value; }
     [SerializeField]
     GameObject m_BlueCan;
-    public GameObject BlueCan { get => m_BlueCan; set => m_BlueCan = value; }       
+    public GameObject BlueCan { get => m_BlueCan; set => m_BlueCan = value; }    
     [SerializeField]
     GameObject m_YellowCan;
     public GameObject YellowCan { get => m_YellowCan; set => m_YellowCan = value; }
 
     [SerializeField]
-    GameObject m_GreenCube1;
-    public GameObject GreenCube1 { get => m_GreenCube1; set => m_GreenCube1 = value; }
+    GameObject m_SlicedBread;
+    public GameObject SlicedBread { get => m_SlicedBread; set => m_SlicedBread = value; }
     [SerializeField]
-    GameObject m_GreenCube2;
-    public GameObject GreenCube2 { get => m_GreenCube2; set => m_GreenCube2 = value; }
+    GameObject m_PlasticCup ;
+    public GameObject PlasticCup { get => m_PlasticCup ; set => m_PlasticCup  = value; }   
     [SerializeField]
-    GameObject m_BlueCube1;
-    public GameObject BlueCube1 { get => m_BlueCube1; set => m_BlueCube1 = value; }
+    GameObject m_PlasticCup2 ;
+    public GameObject PlasticCup2 { get => m_PlasticCup2 ; set => m_PlasticCup2  = value; }    
     [SerializeField]
-    GameObject m_BlueCube2;
-    public GameObject BlueCube2 { get => m_BlueCube2; set => m_BlueCube2 = value; }
+    GameObject m_PlasticBag ;
+    public GameObject PlasticBag { get => m_PlasticBag ; set => m_PlasticBag  = value; }
     [SerializeField]
-    GameObject m_YellowCube1;
-    public GameObject YellowCube1 { get => m_YellowCube1; set => m_YellowCube1 = value; }
+    GameObject m_PlasticBottle ;
+    public GameObject PlasticBottle { get => m_PlasticBottle ; set => m_PlasticBottle  = value; }
     [SerializeField]
-    GameObject m_YellowCube2;
-    public GameObject YellowCube2 { get => m_YellowCube2; set => m_YellowCube2 = value; }
+    GameObject m_OrangeJuice ;
+    public GameObject OrangeJuice { get => m_OrangeJuice ; set => m_OrangeJuice  = value; }
+    [SerializeField]
+    GameObject m_MilkBox ;
+    public GameObject MilkBox { get => m_MilkBox ; set => m_MilkBox  = value; }    
+    [SerializeField]
+    GameObject m_FriedChicken ;
+    public GameObject FriedChicken { get => m_FriedChicken ; set => m_FriedChicken  = value; }    
+    [SerializeField]
+    GameObject m_PaperBall1 ;
+    public GameObject PaperBall1 { get => m_PaperBall1 ; set => m_PaperBall1  = value; }    
+    [SerializeField]
+    GameObject m_PaperBall2 ;
+    public GameObject PaperBall2 { get => m_PaperBall2 ; set => m_PaperBall2  = value; } 
+    [SerializeField]
+    GameObject m_PaperBall3 ;
+    public GameObject PaperBall3 { get => m_PaperBall3 ; set => m_PaperBall3  = value; } 
+    [SerializeField]
+    GameObject m_PaperBall4 ;
+    public GameObject PaperBall4 { get => m_PaperBall4 ; set => m_PaperBall4  = value; } 
+    [SerializeField]
+    GameObject m_PaperBall5 ;
+    public GameObject PaperBall5 { get => m_PaperBall5 ; set => m_PaperBall5  = value; } 
+    [SerializeField]
+    GameObject m_PaperBall6 ;
+    public GameObject PaperBall6 { get => m_PaperBall6 ; set => m_PaperBall6  = value; } 
+    [SerializeField]
+    GameObject m_PaperBall7 ;
+    public GameObject PaperBall7 { get => m_PaperBall7 ; set => m_PaperBall7  = value; } 
+    [SerializeField]
+    GameObject m_Can1 ;
+    public GameObject Can1 { get => m_Can1 ; set => m_Can1  = value; } 
+    [SerializeField]
+    GameObject m_Can2 ;
+    public GameObject Can2 { get => m_Can2 ; set => m_Can2  = value; } 
+    [SerializeField]
+    GameObject m_Can3 ;
+    public GameObject Can3 { get => m_Can3 ; set => m_Can3  = value; }
+    [SerializeField]
+    GameObject m_CartonBox;
+    public GameObject CartonBox { get => m_CartonBox ; set => m_CartonBox  = value; }  
+    [SerializeField]
+    GameObject m_Pie1 ;
+    public GameObject Pie1 { get => m_Pie1 ; set => m_Pie1  = value; } 
+    [SerializeField]
+    GameObject m_Pie2;
+    public GameObject Pie2 { get => m_Pie2 ; set => m_Pie2  = value; } 
+    [SerializeField]
+    GameObject m_Brocolli;
+    public GameObject Brocolli { get => m_Brocolli ; set => m_Brocolli  = value; } 
+    [SerializeField]
+    GameObject m_AppleCore;
+    public GameObject AppleCore { get => m_AppleCore ; set => m_AppleCore  = value; } 
+    [SerializeField]
+    GameObject m_EggBox;
+    public GameObject EggBox { get => m_EggBox ; set => m_EggBox  = value; } 
 
     private GameObject[] pickObjects;
     private GameObject[] placeObjects;
@@ -518,7 +572,7 @@ public class TrajectoryPlanner : MonoBehaviour
             m_JointArticulationBodies[i] = m_NiryoOne.transform.Find(linkName).GetComponent<ArticulationBody>();
         }
 
-        pickObjects = new GameObject[] {m_GreenCube1, m_GreenCube2,  m_BlueCube1, m_BlueCube2, m_YellowCube1, m_YellowCube2};
+        pickObjects = new GameObject[] {m_SlicedBread, m_PlasticCup,  m_PlasticCup2, m_PlasticBag, m_PlasticBottle, m_OrangeJuice, m_MilkBox, m_FriedChicken, m_PaperBall1, m_PaperBall2, m_PaperBall3, m_PaperBall4, m_PaperBall5, m_PaperBall6, m_PaperBall7, m_Can1, m_Can2, m_Can3, m_CartonBox, m_Pie1, m_Pie2, m_Brocolli,  m_AppleCore, m_EggBox};
         placeObjects = new GameObject[]  { m_GreenCan, m_BlueCan, m_YellowCan };
 
         // Find left and right fingers

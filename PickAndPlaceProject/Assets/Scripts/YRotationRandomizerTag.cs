@@ -4,10 +4,12 @@ using UnityEngine.Perception.Randomization.Randomizers;
 public class YRotationRandomizerTag : RandomizerTag
 {
     private Vector3 originalRotation;
+    private Vector3 originalScale;
 
     private void Start()
     {
         originalRotation = transform.eulerAngles;
+        originalScale = transform.localScale;
     }
 
     public void SetYRotation(float yRotation)
@@ -17,6 +19,6 @@ public class YRotationRandomizerTag : RandomizerTag
 
     public void SetScale(float scalex, float scaley, float scalez)
     {
-        transform.localScale = new Vector3(1.3f*scalex,1.2f*scaley,1.3f*scalez);
+        transform.localScale = new Vector3(originalScale.x*scalex,originalScale.y*scaley,originalScale.z*scalez);
     }
 }

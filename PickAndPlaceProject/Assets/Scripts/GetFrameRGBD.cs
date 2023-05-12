@@ -69,7 +69,7 @@ public class GetFrameRGBD : MonoBehaviour
         // EstimatedPos.text = "-";
         // EstimatedRot.text = "-";
         frame++;
-        if (frame>1 && frame>0){
+        if (frame>1 && frame>44999){
             // Capture the screenshot and pass it to the pose estimation service
             byte[] pngBytes = CaptureScreenshot();
             // uint imageHeight = (uint)renderTexture.height;
