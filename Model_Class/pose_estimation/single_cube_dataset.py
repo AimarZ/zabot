@@ -92,7 +92,7 @@ class SingleCubeDataset(torch.utils.data.IterableDataset):
         """
         position_list, image_name = element_iterator
         label = []
-        name2label = { 'nothing': 0, 'green': 1, 'blue': 2, 'yellow': 3  }
+        name2label = { 'nothing': 0, 'sliced_bread': 1, 'plastic_cup': 3, 'plastic_cup2': 3, 'plastic_bag': 3,'plastic_bottle': 3,'orange_juice': 3,'milk_box': 3,'fried_chicken': 1,'paper_ball1': 2,'paper_ball2': 2,'paper_ball3': 2,'paper_ball4': 2,'paper_ball5': 2,'paper_ball6': 2,'paper_ball7': 2,'can1': 3,'can2': 3,'can3': 3,'carton_box': 2,'pie1': 1,'pie2': 1,'brocolli': 1,'apple_core': 1,'egg_box': 2 }
         max_height_ind = -1
         max_height = 0
         for i in range(len(position_list)):
@@ -107,7 +107,7 @@ class SingleCubeDataset(torch.utils.data.IterableDataset):
         if max_height_ind ==-1:
             label = [0]
         else:
-            label = [name2label[position_list[max_height_ind]["label_name"].split("_")[0]]]
+            label = [name2label[position_list[max_height_ind]["label_name"]]]
         
             
         label = torch.tensor(label, dtype=torch.long)

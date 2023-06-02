@@ -115,8 +115,8 @@ class SingleCubeDataset(torch.utils.data.IterableDataset):
                 
         #translation = list(position_list[0]["translation"].values())
         #orientation = list(position_list[0]["rotation"].values())
-        translation = torch.tensor(translation, dtype=torch.float)*100
-        scaleY = torch.tensor(scaleY, dtype=torch.float)*100
+        translation = torch.tensor(translation, dtype=torch.float)
+        scaleY = torch.tensor(scaleY, dtype=torch.float)
 
         image_RGB = Image.open(image_name).convert("RGB")
         transform = self.get_transform()

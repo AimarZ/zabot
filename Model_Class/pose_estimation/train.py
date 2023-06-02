@@ -72,7 +72,7 @@ def train_loop(*, estimator, config, train_dataloader, val_dataloader):
         params,
         betas=(config.adam_optimizer.beta_1, config.adam_optimizer.beta_2),
         lr=config.adam_optimizer.lr,
-        weight_decay = 1e-4,
+        weight_decay = 5e-3,
     )
     n_epochs = config.train.epochs
     #scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=n_epochs*3, eta_min = 1e-5)

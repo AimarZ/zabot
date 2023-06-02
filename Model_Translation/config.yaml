@@ -11,7 +11,7 @@ train:
 val:
   dataset_zip_file_name_validation: Niryo_1by1_validation
   batch_validation_size: 14
-  eval_freq: 4
+  eval_freq: 2
   sample_size_val: 0
 test:
   dataset_zip_file_name_test: Niryo_1by1_validation
@@ -24,12 +24,12 @@ dataset:
   pose_estimation_gcs_path: None
   symmetric: False
 adam_optimizer:
-  lr: 0.0002
+  lr: 0.0000004
   beta_1: 0.9
   beta_2: 0.999
 checkpoint:
-  load_dir_checkpoint: None
-  save_frequency: 4
+  load_dir_checkpoint: /home/aimar/Documentos/v8_output_translationPart2/Niryo_1by1_model_ep18.tar
+  save_frequency: 2
 system:
-  log_dir_system: /home/aimar/Documentos/v7_output_translation
-  data_root: /home/aimar/Documentos/CubeClass_Train50k_Val5k
+  log_dir_system: /home/aimar/Documentos/v8_output_translation
+  data_root: /home/aimar/Documentos/GarbageClass_Train50k_Val5k

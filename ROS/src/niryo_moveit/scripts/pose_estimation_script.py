@@ -15,8 +15,8 @@ from scipy.spatial.transform import Rotation as R
 
 NODE_NAME = "PoseEstimationNode"
 PACKAGE_LOCATION = os.path.dirname(os.path.realpath(__file__))[:-(len("/scripts"))] # remove "/scripts"
-MODEL_PATH = PACKAGE_LOCATION + "/models/Niryo_1by1_model_translation_ep52.tar"
-MODEL_CLASS_PATH = PACKAGE_LOCATION + "/models/Niryo_1by1_model_class_ep64.tar"
+MODEL_PATH = PACKAGE_LOCATION + "/models/Niryo_RealGarbage_model_translation.tar"
+MODEL_CLASS_PATH = PACKAGE_LOCATION + "/models/Niryo_RealGarbage_model_class.tar"
 
 count = 0
 
@@ -71,11 +71,11 @@ def _format_response(est_position, est_scaleY, est_class):
        """
 
     position = Point()
-    position.x = est_position[0]/100
-    position.y = est_position[1]/100
-    position.z = est_position[2]/100
+    position.x = est_position[0]
+    position.y = est_position[1]
+    position.z = est_position[2]
     
-    scaleY = est_scaleY[0]/100
+    scaleY = est_scaleY[0]
 
     label = est_class[0]
     
