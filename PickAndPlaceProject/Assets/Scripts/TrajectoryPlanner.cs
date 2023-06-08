@@ -386,6 +386,8 @@ public class TrajectoryPlanner : MonoBehaviour
 
         request.scaleY = targetScaleY;
 
+        targetPos.y = 0.64; //Erabili altuera konstante bat, modeloaren inferentziako Y erabili ordez. Modeloak errorea dauka, eta mahaia gainazal uniformea da.
+
         // Pick Pose
         request.pick_pose = new PoseMsg
         {
