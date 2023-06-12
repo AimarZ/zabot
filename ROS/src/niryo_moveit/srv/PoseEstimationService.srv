@@ -1,6 +1,0 @@
-sensor_msgs/Image image
----
-geometry_msgs/Point estimated_position
-float32 estimated_scaleY
-int32 estimated_class
-

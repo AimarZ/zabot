@@ -1,0 +1,3 @@
+---
+geometry_msgs/Point estimated_position
+int32 estimated_class

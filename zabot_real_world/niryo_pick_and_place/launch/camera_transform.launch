@@ -1,0 +1,13 @@
+<launch>
+  <!-- Static transform between Camera and World-->
+  <node name="camera_transform" pkg="niryo_pick_and_place" type="camera_transform.py" output="screen">
+      <param name="frame_id" type="string" value="world" />
+      <param name="child_frame_id" type="string" value="camera_link" />
+      <param name="trans_x" type="double" value="0.325" />
+      <param name="trans_y" type="double" value="0.035" />
+      <param name="trans_z" type="double" value="1.024" />
+      <param name="rot_roll" type="double" value="0.0" />
+      <param name="rot_pitch" type="double" value="-3.141592" />
+      <param name="rot_yaw" type="double" value="1.57075" />
+  </node>
+</launch>

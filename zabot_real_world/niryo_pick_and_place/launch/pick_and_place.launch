@@ -1,0 +1,28 @@
+<launch>
+  <!-- Launch Niryo Ned robot description -->
+  <include file="$(find niryo_robot_description)/launch/display_ned.launch"/>
+  <!-- Launch Realsense -->
+  <include file="$(find niryo_pick_and_place)/launch/realsense.launch"/>
+  <!-- Static transform between Camera and World-->
+  <!-- <node name="camera_transform" pkg="niryo_pick_and_place" type="camera_transform.py" output="screen">
+      <param name="frame_id" type="string" value="world" />
+      <param name="child_frame_id" type="string" value="camera_link" />
+      <param name="trans_x" type="double" value="0.32" />
+      <param name="trans_x" type="double" value="0.33" />
+      <param name="trans_y" type="double" value="0.03" />
+      <param name="trans_z" type="double" value="1.03" />
+      <param name="rot_roll" type="double" value="0.0" />
+      <param name="rot_pitch" type="double" value="-3.141592" />
+      <param name="rot_yaw" type="double" value="1.57075" />
+  </node> -->
+  <include file="$(find niryo_pick_and_place)/launch/camera_transform.launch"/>
+  <!-- Blob segmentation node-->
+  <node name="segment_blob" pkg="niryo_pick_and_place" type="segment_blob.py" output="screen"/>
+  <!-- Pose estimation node -->
+  <node name="pose_estimation" pkg="niryo_pick_and_place" type="pose_estimation.py" output="screen"/>
+  <!-- Pick and Place node -->
+  <!-- <node name="pick_and_place" pkg="niryo_pick_and_place" type="pick_and_place.py" output="screen"/> -->
+  
+  <!-- RVIZ -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find niryo_pick_and_place)/rviz/pick_and_place.rviz"/> -->
+</launch>
