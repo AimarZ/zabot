@@ -1,8 +1,6 @@
-<p align="center"><img src="img/zabotSim.gif"/></p>
+<p align="center"><img src="zabotReal.gif"/></p>
 
 # Zabot: Robotic Garbage Sorter
-
-> Note: This project has been tested with Python 3 and ROS Noetic.
 
 ## What is it about?
 
@@ -12,37 +10,37 @@ This project aims to develop the logic and control necessary for a robotic arm, 
    - `real_garbage` branch: Garbage sorter in a Unity simulation environment. 
    - `real_world` branch: Object sorter in a real environment. It is capable of detecting complex objets, but the classification is made by their color.
     
-> Note: This Readme explains the project in the `master` branch. If you are interested in the other projects, switch to the desired branch.
+> Note: This Readme explains the project in the `real_world` branch. If you are interested in the other projects, switch to the desired branch.
 
-This project was created thanks to and starting from these 2 Unity-Technologies tutorials:
+The robot that has been used is Niryo Ned. The robot has been installed on a circular table. Also, a RealSense camera has been installed above the robot. That way, the system is able to detect the objects that are nearby. 2 different segmentation techniques have been inplemented to process the images:
+  - Color segmentation: It uses methods from the CV2 Python package. It is fast but it only detects objects that have predefined colors.
+  - Segmentation through SAM: It uses the Segment Anything Model developed and trained by facebook (https://github.com/facebookresearch/segment-anything). It is slower but it is capable of detecting objects of any shape and color.
 
-  - Pick-and-Place tutorial: https://github.com/Unity-Technologies/Unity-Robotics-Hub/tree/main/tutorials/pick_and_place
-  - Object Pose Estimation demo: https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation
 
 ## Requirements
 
-  - Unity Hub
-  - Unity Editor version 2020.3.11f1 (LTS)
-  - ROS Noetic
-  - Python 3
+  - ROS Melodic
+  - Python 2 and Python 3.8
   - The following packages:
     ```bash
-        sudo apt-get update && sudo apt-get upgrade
-        sudo apt-get install python3-pip ros-noetic-robot-state-publisher ros-noetic-moveit ros-noetic-rosbridge-suite ros-noetic-joy ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-tf* ros-noetic-gazebo-ros-pkgs ros-noetic-joint-state-publisher
-        sudo pip3 install rospkg numpy jsonpickle scipy easydict torch==1.7.1+cu101 torchvision==0.8.2+cu101 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+        pip install 'git+https://github.com/facebookresearch/segment-anything.git'
+        pip install -q roboflow supervision
       ```
-
-    > Note: If you encounter errors installing Pytorch via the above `pip3` command, try the following instead:
-    > ```bash
-    > sudo pip3 install rospkg numpy jsonpickle scipy easydict torch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
-    > ```
+  - SAM requires `python>=3.8`, as well as `pytorch>=1.7` and `torchvision>=0.8`.
+  - Download the model checkpoint `vit_h`: [ViT-H SAM model.](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth)
   
 ## How to try it?
 
 1. Clone the repository.
-2. Load `PickAndPlaceProject/` folder in Unity Hub.
-3. Open the loaded project.
-4. Next, the ROS TCP connection needs to be created. Select `Robotics -> ROS Settings` from the top menu bar.
+2. Place `imageMaskv3.jpg`, `imageMaskv4.jpg` and `sam_segment_blob.py` in `Desktop/`
+3. Download [ned_ros.](https://github.com/NiryoRobotics/ned_ros) packages.
+4. Place `niryo_pick_and_place` package inside a catkin workspace, open a terminal and run the following commands:
+    ```bash
+    source devel/setup.bash
+    catkin_make
+    ```
+5. 
+6. Next, the ROS TCP connection needs to be created. Select `Robotics -> ROS Settings` from the top menu bar.
 
    In the ROS Settings window, the `ROS IP Address` should be the IP address of your ROS machine.
 
