@@ -61,7 +61,7 @@ This project was created thanks to and starting from these 2 Unity-Technologies 
     - Niryo_RealGarbage_model_class.tar
     - Niryo_RealGarbage_model_translation.tar
     
-7. Place the downloaded models inside `ROS/src/niryo_moveit/models/´.
+7. Place the downloaded models inside `ROS/src/niryo_moveit/models/`.
 8. Open a terminal in the `ROS/` folder and run the following commands:
     ```bash
     source devel/setup.bash
