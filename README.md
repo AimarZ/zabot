@@ -58,8 +58,10 @@ This project was created thanks to and starting from these 2 Unity-Technologies 
     - Niryo_1by1_model_translation_ep52.tar
 
   On the other hand, `real_garbage` branch (garbage sorter) works with the following 2 models (although they do not perform quite well):
-    - Niryo_RealGarbage_model_class.tar
-    - Niryo_RealGarbage_model_translation.tar
+ 
+   - Niryo_RealGarbage_model_class.tar
+   - Niryo_RealGarbage_model_translation.tar
+    
 7. Place the downloaded models inside `ROS/src/niryo_moveit/models/´.
 8. Open a terminal in the `ROS/` folder and run the following commands:
     ```bash
