@@ -1,4 +1,4 @@
-<p align="center"><img src="img/zabotSim.gif"/></p>
+<p align="center"><img src="img/zabotSimGarb.png"/></p>
 
 # Zabot: Robotic Garbage Sorter
 
@@ -53,11 +53,7 @@ This project was created thanks to and starting from these 2 Unity-Technologies 
 
    In the ROS Message Browser window, click `Browse` next to the ROS message path. Navigate to and select the ROS directory of this cloned repository. This window will populate with all msg and srv files found in this directory.
 
-6. Go to https://www.dropbox.com/sh/i4ymvbv1k4jel83/AAAvNKmJ5uzqyKQza3c2NXvCa?dl=0 and download the desired trained models. The `master` branch (cube sorter) works with the following 2 models:
-    - Niryo_1by1_model_class_ep64.tar
-    - Niryo_1by1_model_translation_ep52.tar
-
-   On the other hand, `real_garbage` branch (garbage sorter) works with the following 2 models (although they do not perform quite well):
+6. Go to https://www.dropbox.com/sh/i4ymvbv1k4jel83/AAAvNKmJ5uzqyKQza3c2NXvCa?dl=0 and download the desired trained models. The `real_garbage` branch (cube sorter) works with the following 2 models (they do not perform well):
     - Niryo_RealGarbage_model_class.tar
     - Niryo_RealGarbage_model_translation.tar
     
