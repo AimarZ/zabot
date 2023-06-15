@@ -33,7 +33,7 @@ The robot that has been used is Niryo Ned. The robot has been installed on a cir
 
 1. Clone the repository.
 2. Place `imageMaskv3.jpg`, `imageMaskv4.jpg` and `sam_segment_blob.py` in `Desktop/`
-3. Download [ned_ros.](https://github.com/NiryoRobotics/ned_ros) packages.
+3. Download [ned_ros](https://github.com/NiryoRobotics/ned_ros) packages.
 4. Place `niryo_pick_and_place` package inside a catkin workspace, open a terminal and run the following commands:
     ```bash
     source devel/setup.bash
