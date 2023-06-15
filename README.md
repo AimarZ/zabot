@@ -39,30 +39,16 @@ The robot that has been used is Niryo Ned. The robot has been installed on a cir
     source devel/setup.bash
     catkin_make
     ```
-5. 
-6. Next, the ROS TCP connection needs to be created. Select `Robotics -> ROS Settings` from the top menu bar.
-
-   In the ROS Settings window, the `ROS IP Address` should be the IP address of your ROS machine.
-
-   - Find the IP address of your ROS machine. In Ubuntu, open a terminal window, and enter `hostname -I`.
-5. Select `Robotics -> Generate ROS Messages...` from the top menu bar.
-
-   ![](img/2_menu.png)
-
-   In the ROS Message Browser window, click `Browse` next to the ROS message path. Navigate to and select the ROS directory of this cloned repository. This window will populate with all msg and srv files found in this directory.
-
-6. Go to https://www.dropbox.com/sh/i4ymvbv1k4jel83/AAAvNKmJ5uzqyKQza3c2NXvCa?dl=0 and download the desired trained models. The `master` branch (cube sorter) works with the following 2 models:
-    - Niryo_1by1_model_class_ep64.tar
-    - Niryo_1by1_model_translation_ep52.tar
-    
-7. Place the downloaded models inside `ROS/src/niryo_moveit/models/`.
-8. Open a terminal in the `ROS/` folder and run the following commands:
+5. Depending if you want to use SAM or color segmentation, change the `use_sam` variable value inside `niryo_pick_and_place/scripts/pose_estimation.py`.
+6. Run this command:
     ```bash
-    source devel/setup.bash
-    catkin_make
+    roslaunch niryo_pick_and_place pick_and_place.launch
     ```
-9. Once completed, run this command: 
+7. In case you want to use SAM, open another terminal in the `Desktop/` folder, and run the following command:
     ```bash
-    roslaunch niryo_moveit part_3.launch
+    python3.8 sam_segment_blob.py
     ```
-10. Go back to Unity and hit the Play button. You can use the `Randomize` button to change the distribution of the cubes, and hit `Publish` to communicate with ROS and start the pose estimation pipeline.
+8. Finally, run the client through the following command in the catkin workspace:
+    ```bash
+    rosrun niryo_pick_and_place pick_and_place.py
+    ```
