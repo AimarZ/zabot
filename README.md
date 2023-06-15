@@ -8,16 +8,16 @@
 
 This project aims to develop the logic and control necessary for a robotic arm, so that it is capable of detecting, collecting and classifying garbage from its environment. It has 3 branches:
     
-    - `master` branch: Cube type object sorter in a Unity simulation environment.
-    - `real_garbage` branch: Garbage sorter in a Unity simulation environment. 
-    - `real_world` branch: Object sorter in a real environment. It is capable of detecting complex objets, but the classification is made by their color.
+   - `master` branch: Cube type object sorter in a Unity simulation environment.
+   - `real_garbage` branch: Garbage sorter in a Unity simulation environment. 
+   - `real_world` branch: Object sorter in a real environment. It is capable of detecting complex objets, but the classification is made by their color.
     
 > Note: This Readme explains the project in the `master` branch. If you are interested in the other projects, switch to the desired branch.
 
 This project was created thanks to and starting from these 2 Unity-Technologies tutorials:
 
-    - Pick-and-Place tutorial: https://github.com/Unity-Technologies/Unity-Robotics-Hub/tree/main/tutorials/pick_and_place
-    - Object Pose Estimation demo: https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation
+  - Pick-and-Place tutorial: https://github.com/Unity-Technologies/Unity-Robotics-Hub/tree/main/tutorials/pick_and_place
+  - Object Pose Estimation demo: https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation
 
 ## Requirements
 
