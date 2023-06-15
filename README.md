@@ -68,7 +68,7 @@ This project was created thanks to and starting from these 2 Unity-Technologies 
     catkin_make
     ```
 9. Once completed, run this command: 
-  ```bash
-  roslaunch niryo_moveit part_3.launch
-  ```
+    ```bash
+    roslaunch niryo_moveit part_3.launch
+    ```
 10. Go back to Unity and hit the Play button. You can use the `Randomize` button to change the distribution of the cubes, and hit `Publish` to communicate with ROS and start the pose estimation pipeline.
