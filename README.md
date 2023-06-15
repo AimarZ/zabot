@@ -20,7 +20,7 @@ The robot that has been used is Niryo Ned. The robot has been installed on a cir
 ## Requirements
 
   - ROS Melodic
-  - Python 2 and Python 3.8
+  - Python 2
   - The following packages:
     ```bash
         pip install 'git+https://github.com/facebookresearch/segment-anything.git'
