@@ -16,6 +16,8 @@ The robot that has been used is Niryo Ned. The robot has been installed on a cir
   - Color segmentation: It uses methods from the CV2 Python package. It is fast but it only detects objects that have predefined colors.
   - Segmentation through SAM: It uses the Segment Anything Model developed and trained by facebook (https://github.com/facebookresearch/segment-anything). It is slower but it is capable of detecting objects of any shape and color.
 
+Both approaches classify the detected objects depending on their color.
+
 
 ## Requirements
 
